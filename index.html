@@ -2,107 +2,121 @@
 <html lang="id">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ujian Informatika Kelas VII</title>
+<meta name="theme-color" content="#111827">
+<title>Ujian Informatika • Kelas VII</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#eef2ff;color:#172033}.hidden{display:none!important}
-header{background:#111827;color:#fff;padding:15px 5%;display:flex;justify-content:space-between;align-items:center}.brand{font-weight:800}.timer{background:#1f2937;padding:10px 14px;border-radius:12px;font-weight:800}
-main{max-width:1050px;margin:auto;padding:22px}.card{background:#fff;border-radius:20px;padding:25px;box-shadow:0 10px 30px #00000012}.welcome{max-width:700px;margin:50px auto;text-align:center}.hero{font-size:65px}.muted{color:#64748b}
-input{width:100%;padding:13px;border:2px solid #e5e7eb;border-radius:11px;margin:6px 0 14px;font-size:16px}label{display:block;text-align:left;font-weight:700;font-size:14px}
-.btn{border:0;border-radius:12px;padding:13px 18px;font-weight:800;cursor:pointer}.primary{background:#4f46e5;color:#fff}.secondary{background:#e2e8f0}.danger{background:#fee2e2;color:#991b1b}
-.layout{display:grid;grid-template-columns:1fr 250px;gap:18px}.head{display:flex;justify-content:space-between;align-items:center}.progress{height:8px;background:#e5e7eb;border-radius:20px;margin:18px 0;overflow:hidden}.bar{height:100%;background:#4f46e5;width:0}.question{font-size:22px;line-height:1.45}.option{display:flex;gap:12px;align-items:center;width:100%;text-align:left;padding:15px;margin:10px 0;border:2px solid #e5e7eb;border-radius:13px;background:#fff;cursor:pointer}.option.selected{border-color:#4f46e5;background:#eef2ff}.letter{min-width:32px;height:32px;display:grid;place-items:center;background:#f1f5f9;border-radius:9px;font-weight:800}.selected .letter{background:#4f46e5;color:#fff}.numbers{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.num{padding:9px;border:1px solid #ddd;background:#fff;border-radius:8px;cursor:pointer}.num.done{background:#dcfce7;color:#166534}.num.current{outline:3px solid #c7d2fe}.nav{display:flex;justify-content:space-between;margin-top:22px}.result{text-align:center;max-width:700px;margin:30px auto}.emoji{font-size:85px}.score{font-size:65px;font-weight:900;color:#4f46e5}.review{text-align:left}.review div{padding:12px 0;border-bottom:1px solid #eee}.good{color:#16a34a}.bad{color:#dc2626}
-@media(max-width:750px){.layout{grid-template-columns:1fr}.side{order:2}main{padding:10px}.card{padding:18px}.question{font-size:19px}}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:#eef2ff;color:#172033}
+button,input{font:inherit}.hidden{display:none!important}.app{min-height:100vh}
+.topbar{height:68px;background:#111827;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 max(16px,calc((100% - 1120px)/2));gap:15px;position:sticky;top:0;z-index:5}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900}.brand-icon{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#6366f1,#8b5cf6);display:grid;place-items:center}.brand small{display:block;color:#cbd5e1;font-size:10px;font-weight:500}
+.timer{background:#1f2937;border:1px solid #374151;padding:9px 13px;border-radius:12px;font-weight:900}.timer.danger{color:#fecaca;border-color:#ef4444}
+.wrap{max-width:1120px;margin:auto;padding:24px 16px}.card{background:#fff;border-radius:22px;padding:24px;box-shadow:0 12px 35px #0f172a12}
+.welcome{max-width:720px;margin:45px auto;text-align:center}.hero{font-size:65px}.welcome h1{font-size:32px;margin:8px 0}.muted{color:#64748b;line-height:1.55}
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}.info div{background:#f8fafc;border:1px solid #e5e7eb;padding:13px;border-radius:13px;text-align:left}.info b{display:block}.info span{font-size:11px;color:#64748b}
+label{display:block;text-align:left;font-weight:800;font-size:14px;margin:12px 0 6px}input{width:100%;padding:13px;border:2px solid #e5e7eb;border-radius:11px;outline:none}input:focus{border-color:#818cf8}
+.btn{border:0;border-radius:12px;padding:12px 17px;font-weight:800;cursor:pointer}.primary{background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff}.secondary{background:#e2e8f0;color:#172033}.danger{background:#fee2e2;color:#991b1b}
+.layout{display:grid;grid-template-columns:1fr 255px;gap:18px}.head{display:flex;justify-content:space-between;align-items:center;gap:10px}.qnum{font-weight:900}.badge{display:inline-block;margin-top:5px;padding:5px 9px;border-radius:999px;background:#eef2ff;color:#4338ca;font-size:11px;font-weight:900}
+.progress{height:8px;background:#e5e7eb;border-radius:99px;overflow:hidden;margin:17px 0 22px}.bar{height:100%;background:linear-gradient(90deg,#4f46e5,#8b5cf6);width:0;transition:.25s}
+.question{font-size:22px;line-height:1.5;margin:0 0 16px}.illustration{width:100%;max-height:230px;object-fit:cover;border-radius:15px;margin:0 0 17px;border:1px solid #e5e7eb;background:#f8fafc}.caption{font-size:10px;color:#94a3b8;margin:-10px 0 15px}
+.option{width:100%;display:flex;gap:12px;align-items:center;text-align:left;padding:14px;margin:10px 0;border:2px solid #e5e7eb;border-radius:13px;background:#fff;cursor:pointer}.option:hover{border-color:#a5b4fc;background:#fafaff}.option.selected{border-color:#4f46e5;background:#eef2ff}.letter{min-width:33px;height:33px;border-radius:9px;display:grid;place-items:center;background:#f1f5f9;font-weight:900}.selected .letter{background:#4f46e5;color:#fff}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:23px}.student{background:#f8fafc;border-radius:13px;padding:12px;margin-bottom:18px}.student b{display:block}.student span{font-size:12px;color:#64748b}.numbers{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.num{padding:9px;border:1px solid #e5e7eb;background:#fff;border-radius:8px;cursor:pointer;font-weight:800}.num.done{background:#dcfce7;color:#166534;border-color:#86efac}.num.current{outline:3px solid #c7d2fe}.result{text-align:center;max-width:760px;margin:25px auto}.emoji{font-size:90px;animation:bounce 1s infinite}.score{font-size:70px;font-weight:950;color:#4f46e5}.review{text-align:left;margin-top:25px}.review div{padding:12px 0;border-bottom:1px solid #e5e7eb}.good{color:#16a34a}.bad{color:#dc2626}.confetti{position:fixed;inset:0;pointer-events:none;z-index:20;overflow:hidden}.piece{position:absolute;top:-20px;font-size:24px;animation:fall 2.8s linear forwards}
+@keyframes bounce{50%{transform:translateY(-10px) rotate(4deg)}}@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:.2}}
+@media(max-width:780px){.layout{grid-template-columns:1fr}.side{order:2}.info{grid-template-columns:1fr}.wrap{padding:10px}.card{padding:18px}.question{font-size:19px}.illustration{max-height:190px}.topbar{height:62px}.numbers{grid-template-columns:repeat(10,1fr)}}
 </style>
 </head>
 <body>
-<header><div class="brand">🧠 UJIAN INFORMATIKA <small>Kelas VII</small></div><div id="timer" class="timer">25:00</div></header>
-<main>
+<div class="app">
+<header class="topbar"><div class="brand"><div class="brand-icon">🧠</div><div>UJIAN INFORMATIKA<small>Kelas VII • Ulangan Harian</small></div></div><div id="timer" class="timer">⏱️ 40:00</div></header>
+<main class="wrap">
 <section id="start" class="card welcome">
 <div class="hero">💻✨</div><h1>Ulangan Harian Informatika</h1>
-<p class="muted">25 soal • LOTS • MOTS • HOTS</p>
-<p class="muted">Hasil nilai akan otomatis dikirim ke Google Spreadsheet setelah ujian dikumpulkan.</p>
-<label>Nama Lengkap</label><input id="studentName" placeholder="Masukkan nama">
+<p class="muted">Mengenal Informatika • Keterampilan Generik • Berpikir Komputasional • Algoritma • Efektif, Efisien & Optimal • Optimasi Penjadwalan</p>
+<div class="info"><div><b>25 Soal</b><span>LOTS • MOTS • HOTS</span></div><div><b>40 Menit</b><span>Waktu pengerjaan</span></div><div><b>Literasi + Numerasi</b><span>Soal kontekstual</span></div></div>
+<label>Nama Lengkap</label><input id="studentName" placeholder="Masukkan nama lengkap">
 <label>Kelas</label><input id="studentClass" placeholder="Contoh: 7A">
-<button class="btn primary" style="width:100%" onclick="start()">🚀 Mulai Ujian</button>
+<p class="muted" style="font-size:12px;text-align:left">🔒 Selama ujian, tetap di halaman ujian. Sistem mencatat percobaan keluar halaman, keluar fullscreen, dan copy/cut/paste.</p>
+<button class="btn primary" style="width:100%" onclick="startExam()">🚀 Mulai Ujian</button>
 </section>
 
 <section id="exam" class="layout hidden">
 <div class="card">
-<div class="head"><div><b id="qnum"></b><div id="level" class="muted"></div></div><b id="pct">0%</b></div>
+<div class="head"><div><div class="qnum" id="qnum"></div><div id="level" class="badge"></div></div><b id="pct">0%</b></div>
 <div class="progress"><div id="bar" class="bar"></div></div>
-<h2 id="question" class="question"></h2><div id="options"></div>
-<div class="nav"><button id="prev" class="btn secondary" onclick="prev()">← Sebelumnya</button><button id="next" class="btn primary" onclick="next()">Berikutnya →</button></div>
+<div id="imageBox"></div><h2 id="question" class="question"></h2><div id="options"></div>
+<div class="nav"><button id="prev" class="btn secondary" onclick="prevQ()">← Sebelumnya</button><button id="next" class="btn primary" onclick="nextQ()">Berikutnya →</button></div>
 </div>
-<aside class="card side"><b id="sideName"></b><p id="sideClass" class="muted"></p><h3>Nomor Soal</h3><div id="numbers" class="numbers"></div><button class="btn danger" style="width:100%;margin-top:20px" onclick="submitConfirm()">Kumpulkan Ujian</button></aside>
+<aside class="card side"><div class="student"><b id="sideName"></b><span id="sideClass"></span></div><h3>Nomor Soal</h3><div id="numbers" class="numbers"></div><button class="btn danger" style="width:100%;margin-top:20px" onclick="submitConfirm()">Kumpulkan Ujian</button></aside>
 </section>
 
-<section id="result" class="card result hidden">
-<div id="resultEmoji" class="emoji">🎉</div><h1 id="resultTitle"></h1><p id="resultStudent"></p><div id="score" class="score">0</div><p id="detail"></p><p id="sendStatus" class="muted">Mengirim nilai ke spreadsheet...</p>
-<button class="btn primary" onclick="location.reload()">🔄 Selesai</button>
-<div id="review" class="review"></div>
-</section>
-</main>
+<section id="result" class="card result hidden"><div id="resultEmoji" class="emoji">🥳</div><h1 id="resultTitle"></h1><p id="resultStudent"></p><div id="score" class="score">0</div><p id="detail"></p><p id="sendStatus" class="muted"></p><button class="btn primary" onclick="location.reload()">🔄 Selesai</button><div id="review" class="review"></div></section>
+</main></div><div id="confetti" class="confetti"></div>
 
 <script>
-// ============================================================
-// TEMPEL URL WEB APP GOOGLE APPS SCRIPT DI BARIS DI BAWAH INI
-// Contoh: https://script.google.com/macros/s/XXXXXXXX/exec
-// ============================================================
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxUhb41nZqWz1Yw6isEIcx_XmB0BNw0lTXQEtGd9Ylkip5_Su_A6QIn0Nyvg5uL-l7A/exec";
+const GOOGLE_SCRIPT_URL="TEMPEL_URL_APPS_SCRIPT_DI_SINI";
 
 const qs=[
-["LOTS","Informatika","Informatika adalah bidang yang mempelajari...",["Cara menggunakan media sosial saja","Pengolahan informasi dan pemecahan masalah dengan sistem komputasi","Cara memperbaiki semua jenis komputer","Cara bermain game"],1],
-["LOTS","Informatika","Salah satu peran informatika dalam kehidupan sehari-hari adalah...",["Membantu mengolah dan menyajikan informasi","Membuat semua manusia tidak perlu bekerja","Menghilangkan kebutuhan belajar","Membuat keputusan manusia selalu benar"],0],
-["MOTS","Informatika","Aplikasi peta digital dapat membantu seseorang memilih rute perjalanan. Contoh tersebut menunjukkan informatika membantu...",["Menggambar tanpa tujuan","Memecahkan masalah dalam kehidupan sehari-hari","Menghapus data","Mengurangi jumlah kendaraan secara otomatis"],1],
-["LOTS","Keterampilan Generik","Kegiatan membagi tugas dan bekerja bersama untuk mencapai tujuan merupakan...",["Kerja kelompok","Abstraksi","Dekomposisi data","Enkripsi"],0],
-["MOTS","Keterampilan Generik","Saat berdiskusi, pendapat teman berbeda dengan pendapatmu. Sikap yang paling tepat adalah...",["Memotong pembicaraan","Mendengarkan alasan lalu mendiskusikannya","Memaksakan pendapat sendiri","Tidak mau bekerja lagi"],1],
-["MOTS","Keterampilan Generik","Presentasi yang baik sebaiknya dilakukan dengan...",["Penjelasan runtut dan mudah dipahami","Membaca semua tulisan tanpa menjelaskan","Berbicara secepat mungkin","Tidak melihat audiens sama sekali"],0],
-["LOTS","Berpikir Komputasional","Memecah masalah besar menjadi bagian-bagian kecil disebut...",["Abstraksi","Dekomposisi","Optimasi","Presentasi"],1],
-["LOTS","Berpikir Komputasional","Mencari kesamaan atau keteraturan dari beberapa data disebut...",["Pengenalan pola","Dekomposisi","Algoritma","Komunikasi"],0],
-["LOTS","Berpikir Komputasional","Mengambil informasi penting dan mengabaikan informasi yang tidak diperlukan disebut...",["Abstraksi","Presentasi","Sorting","Jaringan"],0],
-["LOTS","Berpikir Komputasional","Urutan langkah yang sistematis untuk menyelesaikan masalah disebut...",["Algoritma","Folder","Data","Grafik"],0],
-["MOTS","Berpikir Komputasional","Raka ingin membuat program menghitung rata-rata nilai. Ia memisahkan masalah menjadi input nilai, penjumlahan, pembagian, dan output. Ini contoh...",["Dekomposisi","Pengenalan pola","Abstraksi","Optimasi jadwal"],0],
-["MOTS","Berpikir Komputasional","Dari data 2, 4, 6, 8, 10, siswa menyadari setiap angka bertambah 2. Ia sedang menggunakan...",["Pengenalan pola","Abstraksi","Komunikasi","Presentasi"],0],
-["MOTS","Abstraksi","Saat membuat denah menuju sekolah, informasi warna sepatu siswa tidak dicantumkan. Alasannya adalah...",["Informasi tersebut tidak penting untuk tujuan denah","Warna sepatu sulit dihitung","Denah harus selalu berwarna hitam putih","Semua informasi harus dihapus"],0],
-["LOTS","Algoritma","Langkah pertama yang baik ketika membuat algoritma adalah...",["Menentukan masalah atau tujuan","Langsung menulis hasil","Menghapus semua data","Memilih warna tampilan"],0],
-["MOTS","Algoritma","Urutan yang paling tepat untuk membuat mi instan adalah...",["Makan → masak air → masukkan mi","Masak air → masukkan mi → tunggu matang → sajikan","Sajikan → masak air → makan","Masukkan mi → makan → masak air"],1],
-["MOTS","Algoritma","Mengapa langkah algoritma harus berurutan dan jelas?",["Agar dapat dilaksanakan sesuai tujuan","Agar terlihat lebih panjang","Agar sulit dipahami","Agar tidak perlu diuji"],0],
-["LOTS","Efektif, Efisien, Optimal","Solusi yang berhasil mencapai tujuan disebut...",["Efektif","Acak","Tidak valid","Boros"],0],
-["LOTS","Efektif, Efisien, Optimal","Solusi yang mencapai tujuan dengan penggunaan waktu atau sumber daya yang hemat disebut...",["Efisien","Tidak efektif","Acak","Buntu"],0],
-["MOTS","Efektif, Efisien, Optimal","Cara A menyelesaikan tugas dengan benar dalam 15 menit. Cara B benar dalam 7 menit. Keduanya menggunakan sumber daya yang sama. Mana yang lebih efisien?",["Cara A","Cara B","Keduanya tidak efisien","Tidak dapat dibandingkan"],1],
-["MOTS","Efektif, Efisien, Optimal","Dari beberapa solusi yang sama-sama berhasil, solusi terbaik sesuai tujuan dan batasan disebut...",["Optimal","Acak","Tidak efektif","Sementara"],0],
-["HOTS","Optimasi Penjadwalan","Satu laboratorium digunakan oleh tiga kelas. Ketiganya meminta jadwal pada pukul 09.00. Apa solusi paling logis?",["Membiarkan ketiganya masuk bersamaan","Membagi waktu penggunaan laboratorium","Membatalkan semua kelas","Memilih kelas secara acak"],1],
-["HOTS","Optimasi Penjadwalan","Sebuah jadwal memiliki dua kegiatan yang memakai ruang yang sama pada waktu yang sama. Masalah utama pada jadwal tersebut adalah...",["Warna jadwal","Konflik waktu dan sumber daya","Ukuran tulisan","Nama kegiatan"],1],
-["HOTS","Optimasi Penjadwalan","Empat kelompok harus presentasi. Setiap kelompok membutuhkan 10 menit dan tersedia waktu 40 menit. Agar semua kelompok mendapat kesempatan, strategi terbaik adalah...",["Semua presentasi bersamaan","Memberi setiap kelompok satu slot 10 menit","Memilih dua kelompok saja","Membiarkan waktu berjalan tanpa jadwal"],1],
-["HOTS","Optimasi Penjadwalan","Dina punya kegiatan A 07.00–08.00, B 07.30–08.30, dan C 08.30–09.00. Jika semua kegiatan menggunakan ruangan yang sama, jadwal mana yang bermasalah?",["A dan B","B dan C","A dan C","Tidak ada"],0],
-["HOTS","Optimasi Penjadwalan","Sekolah ingin menggunakan satu ruang komputer seefisien mungkin. Ada 3 kelas, masing-masing membutuhkan 30 menit dan tidak boleh bentrok. Jadwal yang paling optimal adalah...",["Ketiga kelas memakai ruang bersamaan","Kelas 1 pukul 08.00, kelas 2 pukul 08.30, kelas 3 pukul 09.00","Semua kelas mulai pukul 09.00","Hanya kelas 1 yang menggunakan ruang"],1]
-].map(x=>({level:x[0],cat:x[1],q:x[2],o:x[3],a:x[4]}));
+{l:"LOTS",c:"Informatika",q:"Informatika paling tepat dipahami sebagai bidang yang membantu manusia untuk...",o:["Menggunakan gawai sepanjang hari","mengolah informasi dan menyelesaikan masalah dengan bantuan sistem komputasi","menggantikan semua pekerjaan manusia","membuat semua keputusan tanpa manusia"],a:1,img:"https://learningmole.com/wp-content/uploads/2025/09/v2-t4dvx-q7m6q-1.jpg",cap:"Ilustrasi pembelajaran digital"},
+{l:"LOTS",c:"Informatika",q:"Di perpustakaan, data buku dicatat secara digital sehingga petugas lebih mudah mencari judul dan mengetahui buku yang tersedia. Manfaat informatika pada situasi tersebut adalah...",o:["Mempercepat pengolahan dan pencarian informasi","membuat buku menjadi lebih banyak","menghilangkan kebutuhan petugas","membuat semua buku gratis"],a:0},
+{l:"MOTS • Literasi",c:"Informatika",q:"Bacalah situasi berikut: “Rina menggunakan aplikasi peta untuk membandingkan dua rute menuju sekolah. Rute A 4 km tetapi macet, sedangkan Rute B 6 km tetapi lancar.” Mengapa aplikasi tersebut berguna bagi Rina?",o:["Karena aplikasi selalu memilih keputusan untuk Rina","Karena Rina dapat menggunakan informasi untuk mempertimbangkan pilihan","Karena jarak tidak perlu diperhatikan","Karena semua rute pasti membutuhkan waktu sama"],a:1},
+{l:"LOTS",c:"Keterampilan Generik",q:"Dalam kerja kelompok, pembagian tugas dilakukan agar...",o:["Hanya satu orang yang bekerja","pekerjaan dapat dibagi dan tujuan kelompok lebih mudah dicapai","anggota tidak perlu berkomunikasi","hasil kelompok selalu sempurna"],a:1},
+{l:"MOTS • Literasi",c:"Keterampilan Generik",q:"Kelompokmu sedang membuat poster. Dika ingin memasukkan 10 gambar, sedangkan Naya ingin hanya 4 gambar agar poster mudah dibaca. Tindakan terbaik adalah...",o:["Memilih pendapat Dika tanpa diskusi","mendiskusikan tujuan poster lalu memilih gambar yang paling mendukung isi","menghapus semua gambar","membiarkan poster tanpa keputusan"],a:1},
+{l:"MOTS",c:"Keterampilan Generik",q:"Saat presentasi, seorang siswa menjelaskan hasil kelompok dengan bahasa runtut dan menjawab pertanyaan berdasarkan data. Keterampilan yang tampak adalah...",o:["Komunikasi dan presentasi","menghafal dan menggambar","menyalin dan mencetak","menghapus dan menyimpan"],a:0},
+{l:"LOTS",c:"Berpikir Komputasional",q:"Memecah masalah besar menjadi beberapa bagian yang lebih kecil disebut...",o:["Dekomposisi","Abstraksi","Pengenalan pola","Optimasi"],a:0,img:"https://codevidhya.com/wp-content/uploads/2021/06/decomposition-1024x615.png",cap:"Ilustrasi dekomposisi"},
+{l:"MOTS",c:"Berpikir Komputasional",q:"Kamu menemukan bahwa jumlah kursi pada setiap baris aula bertambah dengan pola 4, 6, 8, 10. Langkah berpikir komputasional yang digunakan untuk menemukan keteraturan itu adalah...",o:["Dekomposisi","Pengenalan pola","Abstraksi","Algoritma"],a:1},
+{l:"MOTS • Literasi",c:"Abstraksi",q:"Sebuah denah sekolah dibuat untuk membantu siswa menemukan ruang laboratorium. Informasi yang paling tidak perlu dicantumkan adalah...",o:["Lokasi laboratorium","arah menuju laboratorium","letak pintu masuk","warna sepatu siswa yang lewat"],a:3},
+{l:"LOTS",c:"Algoritma",q:"Urutan langkah yang jelas dan sistematis untuk menyelesaikan masalah disebut...",o:["Algoritma","Data","Jaringan","Folder"],a:0},
+{l:"MOTS",c:"Algoritma",q:"Perhatikan langkah: 1) Masukkan panjang dan lebar 2) Hitung panjang × lebar 3) Tampilkan hasil. Algoritma tersebut digunakan untuk mencari...",o:["Keliling persegi panjang","Luas persegi panjang","Panjang diagonal","Jumlah sisi"],a:1},
+{l:"MOTS • Numerasi",c:"Algoritma",q:"Sebuah algoritma menghitung total harga 3 buku. Harga tiap buku Rp8.000. Jika algoritma benar, hasil akhirnya adalah...",o:["Rp11.000","Rp16.000","Rp24.000","Rp32.000"],a:2},
+{l:"MOTS",c:"Algoritma",q:"Jika langkah “tampilkan hasil” dilakukan sebelum proses perhitungan selesai, masalah utama algoritma tersebut adalah...",o:["Urutan langkah tidak logis","jumlah data terlalu banyak","warna tampilan salah","nama algoritma terlalu pendek"],a:0},
+{l:"LOTS",c:"Efektif & Efisien",q:"Sebuah solusi disebut efektif jika...",o:["berhasil mencapai tujuan","selalu menggunakan waktu paling lama","memiliki langkah paling banyak","terlihat paling rumit"],a:0},
+{l:"LOTS",c:"Efektif & Efisien",q:"Solusi efisien adalah solusi yang...",o:["mencapai tujuan dengan penggunaan waktu atau sumber daya yang hemat","selalu menghasilkan nilai tertinggi","memiliki langkah sebanyak mungkin","tidak perlu diuji"],a:0},
+{l:"MOTS • Numerasi",c:"Efektif & Efisien",q:"Cara A membutuhkan 12 menit dan berhasil. Cara B membutuhkan 7 menit dan juga berhasil dengan sumber daya yang sama. Jika hanya membandingkan waktu, cara yang lebih efisien adalah...",o:["Cara A","Cara B","Keduanya pasti sama","Tidak ada yang berhasil"],a:1},
+{l:"MOTS",c:"Solusi Optimal",q:"Ada tiga cara mengantar barang yang semuanya berhasil. Pilihan optimal tidak hanya melihat waktu, tetapi juga...",o:["tujuan dan batasan yang harus dipenuhi","warna kendaraan","nama pengantar","panjang nama rute"],a:0},
+{l:"HOTS • Numerasi",c:"Solusi Optimal",q:"Sebuah printer dapat mencetak 20 halaman dalam 4 menit. Printer lain mencetak 30 halaman dalam 5 menit. Jika kualitas sama, printer mana yang lebih cepat berdasarkan halaman per menit?",o:["Printer pertama, 5 halaman/menit","Printer kedua, 6 halaman/menit","Keduanya 4 halaman/menit","Keduanya 5 halaman/menit"],a:1},
+{l:"HOTS • Literasi",c:"Solusi Optimal",q:"Sekolah memilih dua cara mengumpulkan tugas. Cara A cepat tetapi sering membuat file tertukar. Cara B sedikit lebih lama tetapi file tersusun berdasarkan nama dan kelas. Jika tujuan utama adalah data mudah ditemukan kembali, pilihan yang lebih tepat adalah...",o:["Cara A karena selalu paling cepat","Cara B karena lebih sesuai dengan tujuan pengelolaan data","keduanya tidak bisa digunakan","memilih secara acak"],a:1},
+{l:"HOTS",c:"Optimasi Penjadwalan",q:"Satu laboratorium digunakan oleh tiga kelas. Ketiganya meminta pukul 09.00. Agar tidak terjadi bentrok, solusi yang paling tepat adalah...",o:["Membiarkan ketiganya masuk bersamaan","membagi waktu penggunaan laboratorium","membatalkan semua kegiatan","memilih kelas secara acak"],a:1,img:"https://www.kuraplan.com/free-images/classroom_computer_lab",cap:"Ilustrasi pembelajaran di laboratorium komputer"},
+{l:"HOTS • Numerasi",c:"Optimasi Penjadwalan",q:"Empat kelompok harus presentasi. Setiap kelompok mendapat 10 menit. Waktu tersedia 40 menit. Jadwal yang paling tepat adalah...",o:["Semua kelompok presentasi bersamaan","setiap kelompok mendapat satu slot 10 menit","dua kelompok mendapat 20 menit dan dua lainnya tidak presentasi","semua kelompok diberi waktu 5 menit"],a:1},
+{l:"HOTS • Numerasi",c:"Optimasi Penjadwalan",q:"Ruang komputer tersedia pukul 08.00–09.30. Kelas A membutuhkan 30 menit, B 30 menit, dan C 30 menit. Apakah ketiga kelas dapat dijadwalkan tanpa bentrok?",o:["Tidak, karena hanya ada 60 menit","Ya, karena tersedia 90 menit dan kebutuhan total 90 menit","Tidak, karena setiap kelas harus 1 jam","Ya, tetapi harus bersamaan"],a:1},
+{l:"HOTS • Literasi",c:"Optimasi Penjadwalan",q:"Perhatikan jadwal: A 07.00–08.00, B 07.30–08.30, C 08.30–09.00. Ketiganya memakai ruangan yang sama. Pasangan yang mengalami bentrok adalah...",o:["A dan B","B dan C","A dan C","Tidak ada"],a:0,img:"https://marketplace.canva.com/EAF4X-pt3G4/2/0/1131w/canva-pink-orange-beige-and-green-cute-creative-illustration-school-timetable-DT7y5GIre4g.jpg",cap:"Ilustrasi konsep jadwal sekolah (referensi visual)"},
+{l:"HOTS • Numerasi",c:"Optimasi Penjadwalan",q:"Guru memiliki waktu 60 menit untuk 5 presentasi. Jika setiap presentasi membutuhkan 10 menit, berapa menit yang tersisa untuk transisi atau pergantian kelompok?",o:["0 menit","5 menit","10 menit","15 menit"],a:2},
+{l:"HOTS • Literasi",c:"Optimasi Penjadwalan",q:"Panitia ingin membuat jadwal piket. Syaratnya: setiap hari harus ada 2 siswa, tidak boleh ada siswa yang mendapat dua giliran berturut-turut, dan semua siswa mendapat giliran. Prinsip yang paling tepat digunakan adalah...",o:["Mengabaikan semua batasan agar cepat selesai","mempertimbangkan tujuan dan seluruh batasan saat menyusun jadwal","menentukan jadwal secara acak","memberi semua giliran kepada siswa yang sama"],a:1,img:"https://marketplace.canva.com/EAF4X-pt3G4/2/0/1131w/canva-pink-orange-beige-and-green-cute-creative-illustration-school-timetable-DT7y5GIre4g.jpg",cap:"Ilustrasi konsep penjadwalan"}
+];
 
-let i=0,ans=Array(25).fill(null),sec=1500,tm,viol=0,started=false,finished=false;
+let i=0,ans=Array(25).fill(null),sec=2400,timerInt,viol=0,started=false,finished=false;
+
 function shuffle(a){for(let n=a.length-1;n>0;n--){let j=Math.floor(Math.random()*(n+1));[a[n],a[j]]=[a[j],a[n]]}}
-function start(){
+function startExam(){
  if(!studentName.value.trim()||!studentClass.value.trim()){alert("Nama dan kelas wajib diisi.");return}
  shuffle(qs);started=true;sideName.textContent=studentName.value.trim();sideClass.textContent="Kelas "+studentClass.value.trim();
- document.getElementById("start").classList.add("hidden");exam.classList.remove("hidden");render();
- tm=setInterval(()=>{sec--;let m=Math.floor(sec/60),s=sec%60;timer.textContent=`${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;if(sec<=0)finish("Waktu habis")},1000);
+ start.classList.add("hidden");exam.classList.remove("hidden");render();
  try{document.documentElement.requestFullscreen()}catch(e){}
+ timerInt=setInterval(()=>{sec--;let m=Math.floor(sec/60),s=sec%60;timer.textContent=`⏱️ ${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;if(sec<=0)finish("Waktu habis")},1000);
 }
-function render(){let q=qs[i];qnum.textContent=`Soal ${i+1} dari 25`;level.textContent=`${q.cat} • ${q.level}`;question.textContent=q.q;let p=Math.round((i+1)/25*100);bar.style.width=p+"%";pct.textContent=p+"%";options.innerHTML="";
- q.o.forEach((x,k)=>{let b=document.createElement("button");b.className="option"+(ans[i]===k?" selected":"");b.innerHTML=`<span class="letter">${String.fromCharCode(65+k)}</span><span>${x}</span>`;b.onclick=()=>{ans[i]=k;render()};options.appendChild(b)});
- prev.disabled=i===0;next.textContent=i===24?"Kumpulkan ✓":"Berikutnya →";numbers.innerHTML="";qs.forEach((_,k)=>{let b=document.createElement("button");b.className="num "+(ans[k]!==null?"done ":"")+(k===i?"current":"");b.textContent=k+1;b.onclick=()=>{i=k;render()};numbers.appendChild(b)})}
-function next(){if(i<24){i++;render()}else submitConfirm()}function prev(){if(i>0){i--;render()}}
+function render(){
+ let q=qs[i];qnum.textContent=`Soal ${i+1} dari 25`;level.textContent=`${q.c} • ${q.l}`;question.textContent=q.q;let p=Math.round((i+1)/25*100);bar.style.width=p+"%";pct.textContent=p+"%";
+ imageBox.innerHTML=q.img?`<img class="illustration" src="${q.img}" alt="Ilustrasi soal"><div class="caption">${q.cap||"Ilustrasi"}</div>`:"";
+ options.innerHTML="";q.o.forEach((x,k)=>{let b=document.createElement("button");b.className="option"+(ans[i]===k?" selected":"");b.innerHTML=`<span class="letter">${String.fromCharCode(65+k)}</span><span>${x}</span>`;b.onclick=()=>{ans[i]=k;render()};options.appendChild(b)});
+ prev.disabled=i===0;next.textContent=i===24?"Kumpulkan ✓":"Berikutnya →";numbers.innerHTML="";qs.forEach((_,k)=>{let b=document.createElement("button");b.className="num "+(ans[k]!==null?"done ":"")+(k===i?"current":"");b.textContent=k+1;b.onclick=()=>{i=k;render()};numbers.appendChild(b)})
+}
+function nextQ(){if(i<24){i++;render()}else submitConfirm()}function prevQ(){if(i>0){i--;render()}}
 function submitConfirm(){if(confirm("Yakin ingin mengumpulkan ujian?"))finish("Ujian dikumpulkan")}
 function warn(msg){if(!started||finished)return;viol++;alert(`⚠️ Peringatan ${viol}/3\n${msg}`);if(viol>=3)finish("Ujian dihentikan karena 3 pelanggaran")}
-document.addEventListener("visibilitychange",()=>{if(document.hidden)warn("Kamu meninggalkan halaman ujian.")});
-document.addEventListener("copy",e=>{e.preventDefault();warn("Copy tidak diperbolehkan.")});document.addEventListener("cut",e=>{e.preventDefault();warn("Cut tidak diperbolehkan.")});document.addEventListener("paste",e=>{e.preventDefault();warn("Paste tidak diperbolehkan.")});
+document.addEventListener("visibilitychange",()=>{if(started&&!finished&&document.hidden)warn("Kamu meninggalkan halaman ujian.")});
+document.addEventListener("copy",e=>{if(started&&!finished){e.preventDefault();warn("Copy tidak diperbolehkan.")}});
+document.addEventListener("cut",e=>{if(started&&!finished){e.preventDefault();warn("Cut tidak diperbolehkan.")}});
+document.addEventListener("paste",e=>{if(started&&!finished){e.preventDefault();warn("Paste tidak diperbolehkan.")}});
 document.addEventListener("fullscreenchange",()=>{if(started&&!finished&&!document.fullscreenElement)warn("Mode fullscreen ditutup.")});
-async function sendToSheet(data){
- if(GOOGLE_SCRIPT_URL.includes("TEMPEL_"))return false;
- try{await fetch(GOOGLE_SCRIPT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(data)});return true}catch(e){return false}
-}
-async function finish(reason){if(finished)return;finished=true;clearInterval(tm);let correct=ans.reduce((s,v,k)=>s+(v===qs[k].a?1:0),0),nilai=Math.round(correct/25*100),happy=nilai>=75;
+async function sendToSheet(data){if(GOOGLE_SCRIPT_URL.includes("TEMPEL_"))return false;try{await fetch(GOOGLE_SCRIPT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(data)});return true}catch(e){return false}}
+async function finish(reason){
+ if(finished)return;finished=true;clearInterval(timerInt);
+ let correct=ans.reduce((s,v,k)=>s+(v===qs[k].a?1:0),0),nilai=Math.round(correct/25*100),happy=nilai>=75;
  exam.classList.add("hidden");result.classList.remove("hidden");resultEmoji.textContent=happy?"🥳🎉":"😢💪";resultTitle.textContent=happy?"Hebat! Ujian selesai!":"Tetap semangat!";resultStudent.textContent=`${studentName.value.trim()} • Kelas ${studentClass.value.trim()}`;score.textContent=nilai;detail.textContent=`${correct} benar dari 25 soal • ${reason}`;
+ if(happy)confetti();
  let payload={timestamp:new Date().toLocaleString("id-ID"),nama:studentName.value.trim(),kelas:studentClass.value.trim(),nilai,benar:correct,total:25,pelanggaran:viol,status:reason};
- let sent=await sendToSheet(payload);sendStatus.textContent=sent?"✅ Nilai berhasil dikirim ke Google Spreadsheet.":"⚠️ Nilai belum terhubung ke Spreadsheet. Pastikan URL Apps Script sudah dipasang.";
- review.innerHTML="<h2>📋 Review Jawaban</h2>";qs.forEach((q,k)=>{let ok=ans[k]===q.a;review.innerHTML+=`<div><b class="${ok?"good":"bad"}">${k+1}. ${ok?"Benar":"Salah"}</b><br>${q.q}<br><small>Jawaban benar: ${q.o[q.a]}</small></div>`})}
+ let sent=await sendToSheet(payload);sendStatus.textContent=sent?"✅ Nilai berhasil dikirim ke Google Spreadsheet.":"⚠️ Spreadsheet belum terhubung. Tempel URL Apps Script pada kode website.";
+ review.innerHTML="<h2>📋 Review Jawaban</h2>";qs.forEach((q,k)=>{let ok=ans[k]===q.a;review.innerHTML+=`<div><b class="${ok?"good":"bad"}">${k+1}. ${ok?"Benar":"Salah"}</b><br>${q.q}<br><small>Jawaban benar: ${q.o[q.a]}</small></div>`})
+}
+function confetti(){for(let k=0;k<45;k++){let p=document.createElement("div");p.className="piece";p.textContent=["🎉","✨","🎊","⭐","🥳"][Math.floor(Math.random()*5)];p.style.left=Math.random()*100+"%";p.style.animationDelay=Math.random()*1.2+"s";document.getElementById("confetti").appendChild(p);setTimeout(()=>p.remove(),3500)}}
 </script>
-</body></html>
+</body>
+</html>
