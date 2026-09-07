@@ -1,106 +1,164 @@
 <!doctype html>
 <html lang="id">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#111827">
 <title>Ujian Informatika • Kelas VII</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:#eef2ff;color:#172033}
+:root{--ink:#172033;--muted:#64748b;--primary:#5b4df5;--purple:#8b5cf6;--soft:#eef2ff;--line:#e5e7eb;--ok:#16a34a;--bad:#dc2626}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#eef2ff;overflow-x:hidden}
 button,input{font:inherit}.hidden{display:none!important}.app{min-height:100vh}
-.topbar{height:68px;background:#111827;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 max(16px,calc((100% - 1120px)/2));gap:15px;position:sticky;top:0;z-index:5}
-.brand{display:flex;align-items:center;gap:10px;font-weight:900}.brand-icon{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#6366f1,#8b5cf6);display:grid;place-items:center}.brand small{display:block;color:#cbd5e1;font-size:10px;font-weight:500}
-.timer{background:#1f2937;border:1px solid #374151;padding:9px 13px;border-radius:12px;font-weight:900}.timer.danger{color:#fecaca;border-color:#ef4444}
-.wrap{max-width:1120px;margin:auto;padding:24px 16px}.card{background:#fff;border-radius:22px;padding:24px;box-shadow:0 12px 35px #0f172a12}
-.welcome{max-width:720px;margin:45px auto;text-align:center}.hero{font-size:65px}.welcome h1{font-size:32px;margin:8px 0}.muted{color:#64748b;line-height:1.55}
-.info{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}.info div{background:#f8fafc;border:1px solid #e5e7eb;padding:13px;border-radius:13px;text-align:left}.info b{display:block}.info span{font-size:11px;color:#64748b}
-label{display:block;text-align:left;font-weight:800;font-size:14px;margin:12px 0 6px}input{width:100%;padding:13px;border:2px solid #e5e7eb;border-radius:11px;outline:none}input:focus{border-color:#818cf8}
-.btn{border:0;border-radius:12px;padding:12px 17px;font-weight:800;cursor:pointer}.primary{background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff}.secondary{background:#e2e8f0;color:#172033}.danger{background:#fee2e2;color:#991b1b}
-.layout{display:grid;grid-template-columns:1fr 255px;gap:18px}.head{display:flex;justify-content:space-between;align-items:center;gap:10px}.qnum{font-weight:900}.badge{display:inline-block;margin-top:5px;padding:5px 9px;border-radius:999px;background:#eef2ff;color:#4338ca;font-size:11px;font-weight:900}
-.progress{height:8px;background:#e5e7eb;border-radius:99px;overflow:hidden;margin:17px 0 22px}.bar{height:100%;background:linear-gradient(90deg,#4f46e5,#8b5cf6);width:0;transition:.25s}
-.question{font-size:22px;line-height:1.5;margin:0 0 16px}.illustration{width:100%;max-height:230px;object-fit:cover;border-radius:15px;margin:0 0 17px;border:1px solid #e5e7eb;background:#f8fafc}.caption{font-size:10px;color:#94a3b8;margin:-10px 0 15px}
-.option{width:100%;display:flex;gap:12px;align-items:center;text-align:left;padding:14px;margin:10px 0;border:2px solid #e5e7eb;border-radius:13px;background:#fff;cursor:pointer}.option:hover{border-color:#a5b4fc;background:#fafaff}.option.selected{border-color:#4f46e5;background:#eef2ff}.letter{min-width:33px;height:33px;border-radius:9px;display:grid;place-items:center;background:#f1f5f9;font-weight:900}.selected .letter{background:#4f46e5;color:#fff}
-.nav{display:flex;justify-content:space-between;gap:10px;margin-top:23px}.student{background:#f8fafc;border-radius:13px;padding:12px;margin-bottom:18px}.student b{display:block}.student span{font-size:12px;color:#64748b}.numbers{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.num{padding:9px;border:1px solid #e5e7eb;background:#fff;border-radius:8px;cursor:pointer;font-weight:800}.num.done{background:#dcfce7;color:#166534;border-color:#86efac}.num.current{outline:3px solid #c7d2fe}.result{text-align:center;max-width:760px;margin:25px auto}.emoji{font-size:90px;animation:bounce 1s infinite}.score{font-size:70px;font-weight:950;color:#4f46e5}.review{text-align:left;margin-top:25px}.review div{padding:12px 0;border-bottom:1px solid #e5e7eb}.good{color:#16a34a}.bad{color:#dc2626}.confetti{position:fixed;inset:0;pointer-events:none;z-index:20;overflow:hidden}.piece{position:absolute;top:-20px;font-size:24px;animation:fall 2.8s linear forwards}
-@keyframes bounce{50%{transform:translateY(-10px) rotate(4deg)}}@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:.2}}
-@media(max-width:780px){.layout{grid-template-columns:1fr}.side{order:2}.info{grid-template-columns:1fr}.wrap{padding:10px}.card{padding:18px}.question{font-size:19px}.illustration{max-height:190px}.topbar{height:62px}.numbers{grid-template-columns:repeat(10,1fr)}}
+.topbar{height:70px;background:#111827;color:white;display:flex;align-items:center;justify-content:space-between;padding:0 max(14px,calc((100% - 1160px)/2));position:sticky;top:0;z-index:20;box-shadow:0 8px 30px #11182725}
+.brand{display:flex;gap:10px;align-items:center;font-weight:950;letter-spacing:.2px}.brandIcon{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#5b4df5,#a855f7);font-size:22px;animation:float 3s ease-in-out infinite}.brand small{display:block;color:#cbd5e1;font-size:10px;font-weight:600;letter-spacing:.3px}
+.topActions{display:flex;align-items:center;gap:8px}.topBtn{border:1px solid #374151;background:#1f2937;color:white;border-radius:11px;padding:9px 11px;cursor:pointer}.timer{font-weight:950;background:#1f2937;border:1px solid #374151;border-radius:12px;padding:9px 12px}.timer.danger{color:#fecaca;border-color:#ef4444;animation:pulse 1s infinite}
+.wrap{max-width:1160px;margin:auto;padding:26px 15px}.card{background:#fff;border-radius:24px;padding:24px;box-shadow:0 15px 45px #1e1b4b12;border:1px solid #ffffff}
+.welcome{max-width:780px;margin:35px auto;text-align:center;position:relative;overflow:hidden}.welcome:before,.welcome:after{content:"";position:absolute;border-radius:50%;filter:blur(3px);opacity:.25}.welcome:before{width:190px;height:190px;background:#a78bfa;left:-70px;top:-70px}.welcome:after{width:170px;height:170px;background:#67e8f9;right:-65px;bottom:-60px}
+.hero{font-size:68px;position:relative;z-index:1;animation:bob 2.5s ease-in-out infinite}.welcome h1{font-size:clamp(26px,5vw,38px);margin:5px 0 8px;position:relative}.muted{color:var(--muted);line-height:1.6}
+.info{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 0}.infoBox{background:#f8fafc;border:1px solid var(--line);padding:13px;border-radius:15px;text-align:left}.infoBox b{display:block}.infoBox span{font-size:11px;color:var(--muted)}
+label{display:block;text-align:left;font-weight:850;font-size:14px;margin:12px 0 6px}input{width:100%;padding:13px 14px;border:2px solid var(--line);border-radius:12px;outline:none;background:#fff}input:focus{border-color:#818cf8;box-shadow:0 0 0 4px #818cf822}
+.btn{border:0;border-radius:13px;padding:12px 17px;font-weight:900;cursor:pointer;transition:.18s}.btn:hover{transform:translateY(-1px)}.primary{background:linear-gradient(135deg,var(--primary),var(--purple));color:#fff;box-shadow:0 8px 18px #5b4df533}.secondary{background:#e2e8f0;color:var(--ink)}.danger{background:#fee2e2;color:#991b1b}
+.startControls{display:flex;align-items:center;gap:10px;margin:12px 0;text-align:left}.musicSwitch{display:flex;align-items:center;gap:8px;background:#f8fafc;border:1px solid var(--line);padding:9px 12px;border-radius:12px;font-size:13px;font-weight:800}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 265px;gap:18px}.examCard{min-height:590px}.head{display:flex;justify-content:space-between;align-items:center;gap:10px}.qnum{font-weight:950}.badge{display:inline-block;margin-top:5px;padding:5px 9px;border-radius:999px;background:var(--soft);color:#4338ca;font-size:11px;font-weight:950}
+.progress{height:8px;background:#e5e7eb;border-radius:99px;overflow:hidden;margin:17px 0 20px}.bar{height:100%;background:linear-gradient(90deg,#5b4df5,#c084fc);width:0;transition:.3s}
+.illustration{height:235px;border-radius:20px;margin:0 0 18px;position:relative;overflow:hidden;background:linear-gradient(135deg,#eef2ff,#f5f3ff);border:1px solid #e5e7eb;display:flex;align-items:center;justify-content:center}.illBg{position:absolute;inset:0;opacity:.45;background-image:radial-gradient(#8b5cf6 1px,transparent 1px);background-size:18px 18px}.illEmoji{font-size:92px;z-index:2;filter:drop-shadow(0 12px 12px #4c1d9550);animation:float 3s ease-in-out infinite}.bubble{position:absolute;z-index:3;background:white;border:1px solid #e5e7eb;border-radius:14px;padding:7px 10px;font-weight:900;font-size:12px;box-shadow:0 8px 20px #11182712;animation:float 3s ease-in-out infinite}.b1{left:9%;top:18%}.b2{right:8%;top:25%;animation-delay:.6s}.b3{right:15%;bottom:13%;animation-delay:1s}.b4{left:13%;bottom:12%;animation-delay:1.3s}.caption{font-size:10px;color:#94a3b8;margin:-10px 0 14px}
+.question{font-size:22px;line-height:1.5;margin:0 0 16px}.option{width:100%;display:flex;gap:12px;align-items:center;text-align:left;padding:14px;margin:10px 0;border:2px solid var(--line);border-radius:14px;background:white;cursor:pointer;transition:.16s}.option:hover{border-color:#a5b4fc;background:#fafaff;transform:translateX(2px)}.option.selected{border-color:#5b4df5;background:#eef2ff}.letter{min-width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:#f1f5f9;font-weight:950}.selected .letter{background:#5b4df5;color:white}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:24px}.student{background:#f8fafc;border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:18px}.student b{display:block}.student span{font-size:12px;color:var(--muted)}.numbers{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.num{padding:9px 4px;border:1px solid var(--line);background:#fff;border-radius:8px;cursor:pointer;font-weight:850}.num.done{background:#dcfce7;color:#166534;border-color:#86efac}.num.current{outline:3px solid #c7d2fe}
+.result{text-align:center;max-width:780px;margin:25px auto}.emoji{font-size:90px;animation:bob 1.4s ease-in-out infinite}.score{font-size:74px;font-weight:950;color:#5b4df5}.resultActions{display:flex;justify-content:center;gap:10px}.review{text-align:left;margin-top:25px}.review div{padding:12px 0;border-bottom:1px solid var(--line)}.good{color:var(--ok)}.bad{color:var(--bad)}
+.confetti{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}.piece{position:absolute;top:-25px;font-size:24px;animation:fall 2.8s linear forwards}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(20px);background:#111827;color:#fff;padding:12px 16px;border-radius:13px;opacity:0;pointer-events:none;transition:.25s;z-index:60;font-size:13px;font-weight:750;box-shadow:0 10px 30px #11182730}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}@keyframes bob{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-8px) rotate(1deg)}}@keyframes pulse{50%{box-shadow:0 0 0 5px #ef444422}}@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:.15}}
+@media(max-width:820px){.layout{grid-template-columns:1fr}.side{order:2}.info{grid-template-columns:repeat(2,1fr)}.examCard{min-height:0}.illustration{height:200px}.question{font-size:19px}.numbers{grid-template-columns:repeat(10,1fr)}}
+@media(max-width:520px){.topbar{height:62px}.brand{font-size:12px}.brand small{font-size:9px}.brandIcon{width:36px;height:36px}.topBtn{padding:8px}.timer{font-size:12px;padding:8px}.wrap{padding:9px}.card{padding:17px;border-radius:20px}.welcome{margin:18px auto}.hero{font-size:58px}.info{grid-template-columns:1fr 1fr}.infoBox{padding:10px}.illustration{height:175px}.illEmoji{font-size:72px}.bubble{font-size:10px}.nav .btn{padding:11px 12px}.numbers{grid-template-columns:repeat(10,1fr)}.num{padding:8px 2px}.result .score{font-size:60px}}
 </style>
 </head>
 <body>
-<div class="app">
-<header class="topbar"><div class="brand"><div class="brand-icon">🧠</div><div>UJIAN INFORMATIKA<small>Kelas VII • Ulangan Harian</small></div></div><div id="timer" class="timer">⏱️ 40:00</div></header>
+<header class="topbar">
+  <div class="brand"><div class="brandIcon">🧠</div><div>UJIAN INFORMATIKA<small>Kelas VII • Ulangan Harian</small></div></div>
+  <div class="topActions"><button id="musicTop" class="topBtn" onclick="toggleMusic()">🔊</button><div id="timer" class="timer">⏱️ 40:00</div></div>
+</header>
+
 <main class="wrap">
 <section id="start" class="card welcome">
-<div class="hero">💻✨</div><h1>Ulangan Harian Informatika</h1>
-<p class="muted">Mengenal Informatika • Keterampilan Generik • Berpikir Komputasional • Algoritma • Efektif, Efisien & Optimal • Optimasi Penjadwalan</p>
-<div class="info"><div><b>25 Soal</b><span>LOTS • MOTS • HOTS</span></div><div><b>40 Menit</b><span>Waktu pengerjaan</span></div><div><b>Literasi + Numerasi</b><span>Soal kontekstual</span></div></div>
-<label>Nama Lengkap</label><input id="studentName" placeholder="Masukkan nama lengkap">
-<label>Kelas</label><input id="studentClass" placeholder="Contoh: 7A">
-<p class="muted" style="font-size:12px;text-align:left">🔒 Selama ujian, tetap di halaman ujian. Sistem mencatat percobaan keluar halaman, keluar fullscreen, dan copy/cut/paste.</p>
-<button class="btn primary" style="width:100%" onclick="startExam()">🚀 Mulai Ujian</button>
+  <div class="hero">💻✨🧠</div>
+  <h1>Ulangan Harian Informatika</h1>
+  <p class="muted">Mengenal Informatika • Keterampilan Generik • Berpikir Komputasional • Algoritma • Efektif, Efisien & Optimal • Optimasi Penjadwalan</p>
+  <div class="info">
+    <div class="infoBox"><b>25 Soal</b><span>LOTS • MOTS • HOTS</span></div>
+    <div class="infoBox"><b>40 Menit</b><span>Timer otomatis</span></div>
+    <div class="infoBox"><b>Literasi + Numerasi</b><span>Soal kontekstual</span></div>
+    <div class="infoBox"><b>Nilai Otomatis</b><span>Terhubung Spreadsheet</span></div>
+  </div>
+  <label>Nama Lengkap</label><input id="studentName" placeholder="Masukkan nama lengkap">
+  <label>Kelas</label><input id="studentClass" placeholder="Contoh: 7A">
+  <div class="startControls"><div class="musicSwitch">🎵 Musik <span id="musicLabel">ON</span><button class="btn secondary" style="padding:7px 10px" onclick="toggleMusic()">On/Off</button></div></div>
+  <p class="muted" style="font-size:12px;text-align:left">🔒 Selama ujian, tetap di halaman ujian. Sistem mencatat percobaan keluar halaman, keluar fullscreen, dan copy/cut/paste.</p>
+  <button class="btn primary" style="width:100%" onclick="startExam()">🚀 Mulai Ujian</button>
 </section>
 
 <section id="exam" class="layout hidden">
-<div class="card">
-<div class="head"><div><div class="qnum" id="qnum"></div><div id="level" class="badge"></div></div><b id="pct">0%</b></div>
-<div class="progress"><div id="bar" class="bar"></div></div>
-<div id="imageBox"></div><h2 id="question" class="question"></h2><div id="options"></div>
-<div class="nav"><button id="prev" class="btn secondary" onclick="prevQ()">← Sebelumnya</button><button id="next" class="btn primary" onclick="nextQ()">Berikutnya →</button></div>
-</div>
-<aside class="card side"><div class="student"><b id="sideName"></b><span id="sideClass"></span></div><h3>Nomor Soal</h3><div id="numbers" class="numbers"></div><button class="btn danger" style="width:100%;margin-top:20px" onclick="submitConfirm()">Kumpulkan Ujian</button></aside>
+  <div class="card examCard">
+    <div class="head"><div><div class="qnum" id="qnum"></div><div id="level" class="badge"></div></div><b id="pct">0%</b></div>
+    <div class="progress"><div id="bar" class="bar"></div></div>
+    <div id="imageBox"></div>
+    <h2 id="question" class="question"></h2>
+    <div id="options"></div>
+    <div class="nav"><button id="prev" class="btn secondary" onclick="prevQ()">← Sebelumnya</button><button id="next" class="btn primary" onclick="nextQ()">Berikutnya →</button></div>
+  </div>
+  <aside class="card side">
+    <div class="student"><b id="sideName"></b><span id="sideClass"></span></div>
+    <h3>Nomor Soal</h3><div id="numbers" class="numbers"></div>
+    <button class="btn danger" style="width:100%;margin-top:20px" onclick="submitConfirm()">Kumpulkan Ujian</button>
+  </aside>
 </section>
 
-<section id="result" class="card result hidden"><div id="resultEmoji" class="emoji">🥳</div><h1 id="resultTitle"></h1><p id="resultStudent"></p><div id="score" class="score">0</div><p id="detail"></p><p id="sendStatus" class="muted"></p><button class="btn primary" onclick="location.reload()">🔄 Selesai</button><div id="review" class="review"></div></section>
-</main></div><div id="confetti" class="confetti"></div>
+<section id="result" class="card result hidden">
+  <div id="resultEmoji" class="emoji">🥳</div><h1 id="resultTitle"></h1><p id="resultStudent"></p>
+  <div id="score" class="score">0</div><p id="detail"></p><p id="sendStatus" class="muted"></p>
+  <div class="resultActions"><button class="btn primary" onclick="location.reload()">🔄 Selesai</button></div>
+  <div id="review" class="review"></div>
+</section>
+</main>
+<div id="confetti" class="confetti"></div><div id="toast" class="toast"></div>
 
 <script>
+// =========================
+// TEMPEL URL APPS SCRIPT DI SINI
+// =========================
 const GOOGLE_SCRIPT_URL="TEMPEL_URL_APPS_SCRIPT_DI_SINI";
 
+// Setiap soal punya ilustrasi sendiri. Ilustrasi dibuat dari emoji/CSS agar
+// tidak bergantung pada URL gambar luar yang bisa rusak atau berubah.
+// Kamu bisa mengganti emoji/label kapan saja.
 const qs=[
-{l:"LOTS",c:"Informatika",q:"Informatika paling tepat dipahami sebagai bidang yang membantu manusia untuk...",o:["Menggunakan gawai sepanjang hari","mengolah informasi dan menyelesaikan masalah dengan bantuan sistem komputasi","menggantikan semua pekerjaan manusia","membuat semua keputusan tanpa manusia"],a:1,img:"https://learningmole.com/wp-content/uploads/2025/09/v2-t4dvx-q7m6q-1.jpg",cap:"Ilustrasi pembelajaran digital"},
-{l:"LOTS",c:"Informatika",q:"Di perpustakaan, data buku dicatat secara digital sehingga petugas lebih mudah mencari judul dan mengetahui buku yang tersedia. Manfaat informatika pada situasi tersebut adalah...",o:["Mempercepat pengolahan dan pencarian informasi","membuat buku menjadi lebih banyak","menghilangkan kebutuhan petugas","membuat semua buku gratis"],a:0},
-{l:"MOTS • Literasi",c:"Informatika",q:"Bacalah situasi berikut: “Rina menggunakan aplikasi peta untuk membandingkan dua rute menuju sekolah. Rute A 4 km tetapi macet, sedangkan Rute B 6 km tetapi lancar.” Mengapa aplikasi tersebut berguna bagi Rina?",o:["Karena aplikasi selalu memilih keputusan untuk Rina","Karena Rina dapat menggunakan informasi untuk mempertimbangkan pilihan","Karena jarak tidak perlu diperhatikan","Karena semua rute pasti membutuhkan waktu sama"],a:1},
-{l:"LOTS",c:"Keterampilan Generik",q:"Dalam kerja kelompok, pembagian tugas dilakukan agar...",o:["Hanya satu orang yang bekerja","pekerjaan dapat dibagi dan tujuan kelompok lebih mudah dicapai","anggota tidak perlu berkomunikasi","hasil kelompok selalu sempurna"],a:1},
-{l:"MOTS • Literasi",c:"Keterampilan Generik",q:"Kelompokmu sedang membuat poster. Dika ingin memasukkan 10 gambar, sedangkan Naya ingin hanya 4 gambar agar poster mudah dibaca. Tindakan terbaik adalah...",o:["Memilih pendapat Dika tanpa diskusi","mendiskusikan tujuan poster lalu memilih gambar yang paling mendukung isi","menghapus semua gambar","membiarkan poster tanpa keputusan"],a:1},
-{l:"MOTS",c:"Keterampilan Generik",q:"Saat presentasi, seorang siswa menjelaskan hasil kelompok dengan bahasa runtut dan menjawab pertanyaan berdasarkan data. Keterampilan yang tampak adalah...",o:["Komunikasi dan presentasi","menghafal dan menggambar","menyalin dan mencetak","menghapus dan menyimpan"],a:0},
-{l:"LOTS",c:"Berpikir Komputasional",q:"Memecah masalah besar menjadi beberapa bagian yang lebih kecil disebut...",o:["Dekomposisi","Abstraksi","Pengenalan pola","Optimasi"],a:0,img:"https://codevidhya.com/wp-content/uploads/2021/06/decomposition-1024x615.png",cap:"Ilustrasi dekomposisi"},
-{l:"MOTS",c:"Berpikir Komputasional",q:"Kamu menemukan bahwa jumlah kursi pada setiap baris aula bertambah dengan pola 4, 6, 8, 10. Langkah berpikir komputasional yang digunakan untuk menemukan keteraturan itu adalah...",o:["Dekomposisi","Pengenalan pola","Abstraksi","Algoritma"],a:1},
-{l:"MOTS • Literasi",c:"Abstraksi",q:"Sebuah denah sekolah dibuat untuk membantu siswa menemukan ruang laboratorium. Informasi yang paling tidak perlu dicantumkan adalah...",o:["Lokasi laboratorium","arah menuju laboratorium","letak pintu masuk","warna sepatu siswa yang lewat"],a:3},
-{l:"LOTS",c:"Algoritma",q:"Urutan langkah yang jelas dan sistematis untuk menyelesaikan masalah disebut...",o:["Algoritma","Data","Jaringan","Folder"],a:0},
-{l:"MOTS",c:"Algoritma",q:"Perhatikan langkah: 1) Masukkan panjang dan lebar 2) Hitung panjang × lebar 3) Tampilkan hasil. Algoritma tersebut digunakan untuk mencari...",o:["Keliling persegi panjang","Luas persegi panjang","Panjang diagonal","Jumlah sisi"],a:1},
-{l:"MOTS • Numerasi",c:"Algoritma",q:"Sebuah algoritma menghitung total harga 3 buku. Harga tiap buku Rp8.000. Jika algoritma benar, hasil akhirnya adalah...",o:["Rp11.000","Rp16.000","Rp24.000","Rp32.000"],a:2},
-{l:"MOTS",c:"Algoritma",q:"Jika langkah “tampilkan hasil” dilakukan sebelum proses perhitungan selesai, masalah utama algoritma tersebut adalah...",o:["Urutan langkah tidak logis","jumlah data terlalu banyak","warna tampilan salah","nama algoritma terlalu pendek"],a:0},
-{l:"LOTS",c:"Efektif & Efisien",q:"Sebuah solusi disebut efektif jika...",o:["berhasil mencapai tujuan","selalu menggunakan waktu paling lama","memiliki langkah paling banyak","terlihat paling rumit"],a:0},
-{l:"LOTS",c:"Efektif & Efisien",q:"Solusi efisien adalah solusi yang...",o:["mencapai tujuan dengan penggunaan waktu atau sumber daya yang hemat","selalu menghasilkan nilai tertinggi","memiliki langkah sebanyak mungkin","tidak perlu diuji"],a:0},
-{l:"MOTS • Numerasi",c:"Efektif & Efisien",q:"Cara A membutuhkan 12 menit dan berhasil. Cara B membutuhkan 7 menit dan juga berhasil dengan sumber daya yang sama. Jika hanya membandingkan waktu, cara yang lebih efisien adalah...",o:["Cara A","Cara B","Keduanya pasti sama","Tidak ada yang berhasil"],a:1},
-{l:"MOTS",c:"Solusi Optimal",q:"Ada tiga cara mengantar barang yang semuanya berhasil. Pilihan optimal tidak hanya melihat waktu, tetapi juga...",o:["tujuan dan batasan yang harus dipenuhi","warna kendaraan","nama pengantar","panjang nama rute"],a:0},
-{l:"HOTS • Numerasi",c:"Solusi Optimal",q:"Sebuah printer dapat mencetak 20 halaman dalam 4 menit. Printer lain mencetak 30 halaman dalam 5 menit. Jika kualitas sama, printer mana yang lebih cepat berdasarkan halaman per menit?",o:["Printer pertama, 5 halaman/menit","Printer kedua, 6 halaman/menit","Keduanya 4 halaman/menit","Keduanya 5 halaman/menit"],a:1},
-{l:"HOTS • Literasi",c:"Solusi Optimal",q:"Sekolah memilih dua cara mengumpulkan tugas. Cara A cepat tetapi sering membuat file tertukar. Cara B sedikit lebih lama tetapi file tersusun berdasarkan nama dan kelas. Jika tujuan utama adalah data mudah ditemukan kembali, pilihan yang lebih tepat adalah...",o:["Cara A karena selalu paling cepat","Cara B karena lebih sesuai dengan tujuan pengelolaan data","keduanya tidak bisa digunakan","memilih secara acak"],a:1},
-{l:"HOTS",c:"Optimasi Penjadwalan",q:"Satu laboratorium digunakan oleh tiga kelas. Ketiganya meminta pukul 09.00. Agar tidak terjadi bentrok, solusi yang paling tepat adalah...",o:["Membiarkan ketiganya masuk bersamaan","membagi waktu penggunaan laboratorium","membatalkan semua kegiatan","memilih kelas secara acak"],a:1,img:"https://www.kuraplan.com/free-images/classroom_computer_lab",cap:"Ilustrasi pembelajaran di laboratorium komputer"},
-{l:"HOTS • Numerasi",c:"Optimasi Penjadwalan",q:"Empat kelompok harus presentasi. Setiap kelompok mendapat 10 menit. Waktu tersedia 40 menit. Jadwal yang paling tepat adalah...",o:["Semua kelompok presentasi bersamaan","setiap kelompok mendapat satu slot 10 menit","dua kelompok mendapat 20 menit dan dua lainnya tidak presentasi","semua kelompok diberi waktu 5 menit"],a:1},
-{l:"HOTS • Numerasi",c:"Optimasi Penjadwalan",q:"Ruang komputer tersedia pukul 08.00–09.30. Kelas A membutuhkan 30 menit, B 30 menit, dan C 30 menit. Apakah ketiga kelas dapat dijadwalkan tanpa bentrok?",o:["Tidak, karena hanya ada 60 menit","Ya, karena tersedia 90 menit dan kebutuhan total 90 menit","Tidak, karena setiap kelas harus 1 jam","Ya, tetapi harus bersamaan"],a:1},
-{l:"HOTS • Literasi",c:"Optimasi Penjadwalan",q:"Perhatikan jadwal: A 07.00–08.00, B 07.30–08.30, C 08.30–09.00. Ketiganya memakai ruangan yang sama. Pasangan yang mengalami bentrok adalah...",o:["A dan B","B dan C","A dan C","Tidak ada"],a:0,img:"https://marketplace.canva.com/EAF4X-pt3G4/2/0/1131w/canva-pink-orange-beige-and-green-cute-creative-illustration-school-timetable-DT7y5GIre4g.jpg",cap:"Ilustrasi konsep jadwal sekolah (referensi visual)"},
-{l:"HOTS • Numerasi",c:"Optimasi Penjadwalan",q:"Guru memiliki waktu 60 menit untuk 5 presentasi. Jika setiap presentasi membutuhkan 10 menit, berapa menit yang tersisa untuk transisi atau pergantian kelompok?",o:["0 menit","5 menit","10 menit","15 menit"],a:2},
-{l:"HOTS • Literasi",c:"Optimasi Penjadwalan",q:"Panitia ingin membuat jadwal piket. Syaratnya: setiap hari harus ada 2 siswa, tidak boleh ada siswa yang mendapat dua giliran berturut-turut, dan semua siswa mendapat giliran. Prinsip yang paling tepat digunakan adalah...",o:["Mengabaikan semua batasan agar cepat selesai","mempertimbangkan tujuan dan seluruh batasan saat menyusun jadwal","menentukan jadwal secara acak","memberi semua giliran kepada siswa yang sama"],a:1,img:"https://marketplace.canva.com/EAF4X-pt3G4/2/0/1131w/canva-pink-orange-beige-and-green-cute-creative-illustration-school-timetable-DT7y5GIre4g.jpg",cap:"Ilustrasi konsep penjadwalan"}
+{l:"LOTS",c:"Informatika",icon:"💻",tags:["DATA","INFO"],q:"Informatika paling tepat dipahami sebagai bidang yang membantu manusia untuk...",o:["Menggunakan gawai sepanjang hari","mengolah informasi dan menyelesaikan masalah dengan bantuan sistem komputasi","menggantikan semua pekerjaan manusia","membuat semua keputusan tanpa manusia"],a:1},
+{l:"LOTS",c:"Informatika",icon:"📚",tags:["BUKU","🔎"],q:"Di perpustakaan, data buku dicatat secara digital sehingga petugas lebih mudah mencari judul dan mengetahui buku yang tersedia. Manfaat informatika pada situasi tersebut adalah...",o:["Mempercepat pengolahan dan pencarian informasi","membuat buku menjadi lebih banyak","menghilangkan kebutuhan petugas","membuat semua buku gratis"],a:0},
+{l:"MOTS • Literasi",c:"Informatika",icon:"🗺️",tags:["RUTE A","RUTE B"],q:"Bacalah situasi berikut: “Rina menggunakan aplikasi peta untuk membandingkan dua rute menuju sekolah. Rute A 4 km tetapi macet, sedangkan Rute B 6 km tetapi lancar.” Mengapa aplikasi tersebut berguna bagi Rina?",o:["Karena aplikasi selalu memilih keputusan untuk Rina","Karena Rina dapat menggunakan informasi untuk mempertimbangkan pilihan","Karena jarak tidak perlu diperhatikan","Karena semua rute pasti membutuhkan waktu sama"],a:1},
+{l:"LOTS",c:"Keterampilan Generik",icon:"🤝",tags:["BAGI TUGAS","TEAM"],q:"Dalam kerja kelompok, pembagian tugas dilakukan agar...",o:["Hanya satu orang yang bekerja","pekerjaan dapat dibagi dan tujuan kelompok lebih mudah dicapai","anggota tidak perlu berkomunikasi","hasil kelompok selalu sempurna"],a:1},
+{l:"MOTS • Literasi",c:"Keterampilan Generik",icon:"💬",tags:["DISKUSI","IDE"],q:"Kelompokmu sedang membuat poster. Dika ingin memasukkan 10 gambar, sedangkan Naya ingin hanya 4 gambar agar poster mudah dibaca. Tindakan terbaik adalah...",o:["Memilih pendapat Dika tanpa diskusi","mendiskusikan tujuan poster lalu memilih gambar yang paling mendukung isi","menghapus semua gambar","membiarkan poster tanpa keputusan"],a:1},
+{l:"MOTS",c:"Keterampilan Generik",icon:"🎤",tags:["PRESENT","DATA"],q:"Saat presentasi, seorang siswa menjelaskan hasil kelompok dengan bahasa runtut dan menjawab pertanyaan berdasarkan data. Keterampilan yang tampak adalah...",o:["Komunikasi dan presentasi","menghafal dan menggambar","menyalin dan mencetak","menghapus dan menyimpan"],a:0},
+{l:"LOTS",c:"Berpikir Komputasional",icon:"🧩",tags:["PECAH","MASALAH"],q:"Memecah masalah besar menjadi beberapa bagian yang lebih kecil disebut...",o:["Dekomposisi","Abstraksi","Pengenalan pola","Optimasi"],a:0},
+{l:"MOTS",c:"Berpikir Komputasional",icon:"🔢",tags:["4","6","8","10"],q:"Kamu menemukan bahwa jumlah kursi pada setiap baris aula bertambah dengan pola 4, 6, 8, 10. Langkah berpikir komputasional yang digunakan untuk menemukan keteraturan itu adalah...",o:["Dekomposisi","Pengenalan pola","Abstraksi","Algoritma"],a:1},
+{l:"MOTS • Literasi",c:"Abstraksi",icon:"🗺️",tags:["PENTING","✂️"],q:"Sebuah denah sekolah dibuat untuk membantu siswa menemukan ruang laboratorium. Informasi yang paling tidak perlu dicantumkan adalah...",o:["Lokasi laboratorium","arah menuju laboratorium","letak pintu masuk","warna sepatu siswa yang lewat"],a:3},
+{l:"LOTS",c:"Algoritma",icon:"📋",tags:["1→2→3","STEP"],q:"Urutan langkah yang jelas dan sistematis untuk menyelesaikan masalah disebut...",o:["Algoritma","Data","Jaringan","Folder"],a:0},
+{l:"MOTS",c:"Algoritma",icon:"📐",tags:["P×L","LUAS"],q:"Perhatikan langkah: 1) Masukkan panjang dan lebar 2) Hitung panjang × lebar 3) Tampilkan hasil. Algoritma tersebut digunakan untuk mencari...",o:["Keliling persegi panjang","Luas persegi panjang","Panjang diagonal","Jumlah sisi"],a:1},
+{l:"MOTS • Numerasi",c:"Algoritma",icon:"🧮",tags:["3 × 8.000","= 24.000"],q:"Sebuah algoritma menghitung total harga 3 buku. Harga tiap buku Rp8.000. Jika algoritma benar, hasil akhirnya adalah...",o:["Rp11.000","Rp16.000","Rp24.000","Rp32.000"],a:2},
+{l:"MOTS",c:"Algoritma",icon:"🔀",tags:["URUTAN?","⚠️"],q:"Jika langkah “tampilkan hasil” dilakukan sebelum proses perhitungan selesai, masalah utama algoritma tersebut adalah...",o:["Urutan langkah tidak logis","jumlah data terlalu banyak","warna tampilan salah","nama algoritma terlalu pendek"],a:0},
+{l:"LOTS",c:"Efektif & Efisien",icon:"🎯",tags:["TUJUAN","✓"],q:"Sebuah solusi disebut efektif jika...",o:["berhasil mencapai tujuan","selalu menggunakan waktu paling lama","memiliki langkah paling banyak","terlihat paling rumit"],a:0},
+{l:"LOTS",c:"Efektif & Efisien",icon:"⚡",tags:["HEMAT","WAKTU"],q:"Solusi efisien adalah solusi yang...",o:["mencapai tujuan dengan penggunaan waktu atau sumber daya yang hemat","selalu menghasilkan nilai tertinggi","memiliki langkah sebanyak mungkin","tidak perlu diuji"],a:0},
+{l:"MOTS • Numerasi",c:"Efektif & Efisien",icon:"⏱️",tags:["12 MENIT","7 MENIT"],q:"Cara A membutuhkan 12 menit dan berhasil. Cara B membutuhkan 7 menit dan juga berhasil dengan sumber daya yang sama. Jika hanya membandingkan waktu, cara yang lebih efisien adalah...",o:["Cara A","Cara B","Keduanya pasti sama","Tidak ada yang berhasil"],a:1},
+{l:"MOTS",c:"Solusi Optimal",icon:"🏆",tags:["PILIH","TERBAIK"],q:"Ada tiga cara mengantar barang yang semuanya berhasil. Pilihan optimal tidak hanya melihat waktu, tetapi juga...",o:["tujuan dan batasan yang harus dipenuhi","warna kendaraan","nama pengantar","panjang nama rute"],a:0},
+{l:"HOTS • Numerasi",c:"Solusi Optimal",icon:"🖨️",tags:["20÷4=5","30÷5=6"],q:"Sebuah printer dapat mencetak 20 halaman dalam 4 menit. Printer lain mencetak 30 halaman dalam 5 menit. Jika kualitas sama, printer mana yang lebih cepat berdasarkan halaman per menit?",o:["Printer pertama, 5 halaman/menit","Printer kedua, 6 halaman/menit","Keduanya 4 halaman/menit","Keduanya 5 halaman/menit"],a:1},
+{l:"HOTS • Literasi",c:"Solusi Optimal",icon:"📁",tags:["CEPAT","RAPI"],q:"Sekolah memilih dua cara mengumpulkan tugas. Cara A cepat tetapi sering membuat file tertukar. Cara B sedikit lebih lama tetapi file tersusun berdasarkan nama dan kelas. Jika tujuan utama adalah data mudah ditemukan kembali, pilihan yang lebih tepat adalah...",o:["Cara A karena selalu paling cepat","Cara B karena lebih sesuai dengan tujuan pengelolaan data","keduanya tidak bisa digunakan","memilih secara acak"],a:1},
+{l:"HOTS",c:"Optimasi Penjadwalan",icon:"🖥️",tags:["09.00","LAB"],q:"Satu laboratorium digunakan oleh tiga kelas. Ketiganya meminta pukul 09.00. Agar tidak terjadi bentrok, solusi yang paling tepat adalah...",o:["Membiarkan ketiganya masuk bersamaan","membagi waktu penggunaan laboratorium","membatalkan semua kegiatan","memilih kelas secara acak"],a:1},
+{l:"HOTS • Numerasi",c:"Optimasi Penjadwalan",icon:"🎤",tags:["4 × 10","40 MENIT"],q:"Empat kelompok harus presentasi. Setiap kelompok mendapat 10 menit. Waktu tersedia 40 menit. Jadwal yang paling tepat adalah...",o:["Semua kelompok presentasi bersamaan","setiap kelompok mendapat satu slot 10 menit","dua kelompok mendapat 20 menit dan dua lainnya tidak presentasi","semua kelompok diberi waktu 5 menit"],a:1},
+{l:"HOTS • Numerasi",c:"Optimasi Penjadwalan",icon:"⏰",tags:["08:00","09:30"],q:"Ruang komputer tersedia pukul 08.00–09.30. Kelas A membutuhkan 30 menit, B 30 menit, dan C 30 menit. Apakah ketiga kelas dapat dijadwalkan tanpa bentrok?",o:["Tidak, karena hanya ada 60 menit","Ya, karena tersedia 90 menit dan kebutuhan total 90 menit","Tidak, karena setiap kelas harus 1 jam","Ya, tetapi harus bersamaan"],a:1},
+{l:"HOTS • Literasi",c:"Optimasi Penjadwalan",icon:"📅",tags:["A 07–08","B 07:30–08:30"],q:"Perhatikan jadwal: A 07.00–08.00, B 07.30–08.30, C 08.30–09.00. Ketiganya memakai ruangan yang sama. Pasangan yang mengalami bentrok adalah...",o:["A dan B","B dan C","A dan C","Tidak ada"],a:0},
+{l:"HOTS • Numerasi",c:"Optimasi Penjadwalan",icon:"⏱️",tags:["60 MENIT","5×10"],q:"Guru memiliki waktu 60 menit untuk 5 presentasi. Jika setiap presentasi membutuhkan 10 menit, berapa menit yang tersisa untuk transisi atau pergantian kelompok?",o:["0 menit","5 menit","10 menit","15 menit"],a:2},
+{l:"HOTS • Literasi",c:"Optimasi Penjadwalan",icon:"🧑‍🤝‍🧑",tags:["2 SISWA/HARI","ATURAN"],q:"Panitia ingin membuat jadwal piket. Syaratnya: setiap hari harus ada 2 siswa, tidak boleh ada siswa yang mendapat dua giliran berturut-turut, dan semua siswa mendapat giliran. Prinsip yang paling tepat digunakan adalah...",o:["Mengabaikan semua batasan agar cepat selesai","mempertimbangkan tujuan dan seluruh batasan saat menyusun jadwal","menentukan jadwal secara acak","memberi semua giliran kepada siswa yang sama"],a:1}
 ];
 
-let i=0,ans=Array(25).fill(null),sec=2400,timerInt,viol=0,started=false,finished=false;
+let i=0,ans=Array(25).fill(null),sec=2400,timerInt,viol=0,started=false,finished=false,musicOn=true,audioCtx,masterGain,musicTimer;
 
 function shuffle(a){for(let n=a.length-1;n>0;n--){let j=Math.floor(Math.random()*(n+1));[a[n],a[j]]=[a[j],a[n]]}}
+function toast(t){const x=document.getElementById("toast");x.textContent=t;x.classList.add("show");setTimeout(()=>x.classList.remove("show"),1800)}
+function toggleMusic(){
+ musicOn=!musicOn;document.getElementById("musicLabel").textContent=musicOn?"ON":"OFF";document.getElementById("musicTop").textContent=musicOn?"🔊":"🔇";
+ if(musicOn){if(started)startMusic();else toast("🎵 Musik akan aktif saat ujian dimulai")}else stopMusic();
+}
+function startMusic(){
+ if(!musicOn)return;
+ try{
+  if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+  audioCtx.resume(); if(masterGain)masterGain.disconnect();
+  masterGain=audioCtx.createGain();masterGain.gain.value=.035;masterGain.connect(audioCtx.destination);
+  if(musicTimer)clearInterval(musicTimer);
+  const notes=[261.63,329.63,392,523.25,392,329.63,293.66,349.23];
+  let n=0;
+  const play=()=>{if(!musicOn)return;const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type="sine";o.frequency.value=notes[n++%notes.length];g.gain.setValueAtTime(.0001,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.18,audioCtx.currentTime+.03);g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+.65);o.connect(g);g.connect(masterGain);o.start();o.stop(audioCtx.currentTime+.7)};
+  play();musicTimer=setInterval(play,850);
+ }catch(e){}
+}
+function stopMusic(){if(musicTimer)clearInterval(musicTimer);if(masterGain)masterGain.gain.value=.0001}
 function startExam(){
  if(!studentName.value.trim()||!studentClass.value.trim()){alert("Nama dan kelas wajib diisi.");return}
  shuffle(qs);started=true;sideName.textContent=studentName.value.trim();sideClass.textContent="Kelas "+studentClass.value.trim();
- start.classList.add("hidden");exam.classList.remove("hidden");render();
+ start.classList.add("hidden");exam.classList.remove("hidden");render();startMusic();
  try{document.documentElement.requestFullscreen()}catch(e){}
- timerInt=setInterval(()=>{sec--;let m=Math.floor(sec/60),s=sec%60;timer.textContent=`⏱️ ${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;if(sec<=0)finish("Waktu habis")},1000);
+ timerInt=setInterval(()=>{sec--;let m=Math.floor(sec/60),s=sec%60;timer.textContent=`⏱️ ${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;if(sec<=300)timer.classList.add("danger");if(sec<=0)finish("Waktu habis")},1000);
 }
 function render(){
- let q=qs[i];qnum.textContent=`Soal ${i+1} dari 25`;level.textContent=`${q.c} • ${q.l}`;question.textContent=q.q;let p=Math.round((i+1)/25*100);bar.style.width=p+"%";pct.textContent=p+"%";
- imageBox.innerHTML=q.img?`<img class="illustration" src="${q.img}" alt="Ilustrasi soal"><div class="caption">${q.cap||"Ilustrasi"}</div>`:"";
- options.innerHTML="";q.o.forEach((x,k)=>{let b=document.createElement("button");b.className="option"+(ans[i]===k?" selected":"");b.innerHTML=`<span class="letter">${String.fromCharCode(65+k)}</span><span>${x}</span>`;b.onclick=()=>{ans[i]=k;render()};options.appendChild(b)});
- prev.disabled=i===0;next.textContent=i===24?"Kumpulkan ✓":"Berikutnya →";numbers.innerHTML="";qs.forEach((_,k)=>{let b=document.createElement("button");b.className="num "+(ans[k]!==null?"done ":"")+(k===i?"current":"");b.textContent=k+1;b.onclick=()=>{i=k;render()};numbers.appendChild(b)})
+ const q=qs[i];qnum.textContent=`Soal ${i+1} dari 25`;level.textContent=`${q.c} • ${q.l}`;question.textContent=q.q;
+ const p=Math.round((i+1)/25*100);bar.style.width=p+"%";pct.textContent=p+"%";
+ imageBox.innerHTML=`<div class="illustration"><div class="illBg"></div><div class="bubble b1">${q.tags[0]}</div><div class="bubble b2">${q.tags[1]}</div><div class="bubble b3">${q.tags[q.tags.length-1]}</div><div class="bubble b4">💡</div><div class="illEmoji">${q.icon}</div></div><div class="caption">🖼️ Ilustrasi visual soal</div>`;
+ options.innerHTML="";
+ q.o.forEach((x,k)=>{let b=document.createElement("button");b.className="option"+(ans[i]===k?" selected":"");b.innerHTML=`<span class="letter">${String.fromCharCode(65+k)}</span><span>${x}</span>`;b.onclick=()=>{ans[i]=k;render()};options.appendChild(b)});
+ prev.disabled=i===0;next.textContent=i===24?"Kumpulkan ✓":"Berikutnya →";
+ numbers.innerHTML="";qs.forEach((_,k)=>{let b=document.createElement("button");b.className="num "+(ans[k]!==null?"done ":"")+(k===i?"current":"");b.textContent=k+1;b.onclick=()=>{i=k;render()};numbers.appendChild(b)})
 }
 function nextQ(){if(i<24){i++;render()}else submitConfirm()}function prevQ(){if(i>0){i--;render()}}
 function submitConfirm(){if(confirm("Yakin ingin mengumpulkan ujian?"))finish("Ujian dikumpulkan")}
-function warn(msg){if(!started||finished)return;viol++;alert(`⚠️ Peringatan ${viol}/3\n${msg}`);if(viol>=3)finish("Ujian dihentikan karena 3 pelanggaran")}
+function warn(msg){if(!started||finished)return;viol++;toast(`⚠️ Peringatan ${viol}/3`);alert(`⚠️ Peringatan ${viol}/3\n${msg}`);if(viol>=3)finish("Ujian dihentikan karena 3 pelanggaran")}
 document.addEventListener("visibilitychange",()=>{if(started&&!finished&&document.hidden)warn("Kamu meninggalkan halaman ujian.")});
 document.addEventListener("copy",e=>{if(started&&!finished){e.preventDefault();warn("Copy tidak diperbolehkan.")}});
 document.addEventListener("cut",e=>{if(started&&!finished){e.preventDefault();warn("Cut tidak diperbolehkan.")}});
@@ -108,15 +166,16 @@ document.addEventListener("paste",e=>{if(started&&!finished){e.preventDefault();
 document.addEventListener("fullscreenchange",()=>{if(started&&!finished&&!document.fullscreenElement)warn("Mode fullscreen ditutup.")});
 async function sendToSheet(data){if(GOOGLE_SCRIPT_URL.includes("TEMPEL_"))return false;try{await fetch(GOOGLE_SCRIPT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(data)});return true}catch(e){return false}}
 async function finish(reason){
- if(finished)return;finished=true;clearInterval(timerInt);
+ if(finished)return;finished=true;clearInterval(timerInt);stopMusic();
  let correct=ans.reduce((s,v,k)=>s+(v===qs[k].a?1:0),0),nilai=Math.round(correct/25*100),happy=nilai>=75;
- exam.classList.add("hidden");result.classList.remove("hidden");resultEmoji.textContent=happy?"🥳🎉":"😢💪";resultTitle.textContent=happy?"Hebat! Ujian selesai!":"Tetap semangat!";resultStudent.textContent=`${studentName.value.trim()} • Kelas ${studentClass.value.trim()}`;score.textContent=nilai;detail.textContent=`${correct} benar dari 25 soal • ${reason}`;
+ exam.classList.add("hidden");result.classList.remove("hidden");resultEmoji.textContent=happy?"🥳🎉":"😢💪";resultTitle.textContent=happy?"Hebat! Ujian selesai!":"Tetap semangat!";
+ resultStudent.textContent=`${studentName.value.trim()} • Kelas ${studentClass.value.trim()}`;score.textContent=nilai;detail.textContent=`${correct} benar dari 25 soal • ${reason}`;
  if(happy)confetti();
  let payload={timestamp:new Date().toLocaleString("id-ID"),nama:studentName.value.trim(),kelas:studentClass.value.trim(),nilai,benar:correct,total:25,pelanggaran:viol,status:reason};
- let sent=await sendToSheet(payload);sendStatus.textContent=sent?"✅ Nilai berhasil dikirim ke Google Spreadsheet.":"⚠️ Spreadsheet belum terhubung. Tempel URL Apps Script pada kode website.";
+ let sent=await sendToSheet(payload);sendStatus.textContent=sent?"✅ Nilai berhasil dikirim ke Google Spreadsheet.":"⚠️ Spreadsheet belum terhubung. Pastikan URL Apps Script sudah dipasang di index.html GitHub.";
  review.innerHTML="<h2>📋 Review Jawaban</h2>";qs.forEach((q,k)=>{let ok=ans[k]===q.a;review.innerHTML+=`<div><b class="${ok?"good":"bad"}">${k+1}. ${ok?"Benar":"Salah"}</b><br>${q.q}<br><small>Jawaban benar: ${q.o[q.a]}</small></div>`})
 }
-function confetti(){for(let k=0;k<45;k++){let p=document.createElement("div");p.className="piece";p.textContent=["🎉","✨","🎊","⭐","🥳"][Math.floor(Math.random()*5)];p.style.left=Math.random()*100+"%";p.style.animationDelay=Math.random()*1.2+"s";document.getElementById("confetti").appendChild(p);setTimeout(()=>p.remove(),3500)}}
+function confetti(){for(let k=0;k<55;k++){let p=document.createElement("div");p.className="piece";p.textContent=["🎉","✨","🎊","⭐","🥳","💜"][Math.floor(Math.random()*6)];p.style.left=Math.random()*100+"%";p.style.animationDelay=Math.random()*1.2+"s";document.getElementById("confetti").appendChild(p);setTimeout(()=>p.remove(),3500)}}
 </script>
 </body>
 </html>
