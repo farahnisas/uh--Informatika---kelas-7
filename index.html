@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#090b1a">
-<title>Ulangan Informatika - Kelas VII</title>
+<meta name="theme-color" content="#080b1f">
+<title>Ulangan Informatika • Kelas VII</title>
 
 <style>
 *{
@@ -14,49 +14,52 @@
 }
 
 :root{
-    --bg:#080a18;
-    --card:rgba(20,24,48,.78);
+    --bg:#080b1f;
+    --bg2:#10152f;
+    --card:rgba(19,24,52,.82);
+    --card2:rgba(255,255,255,.055);
     --primary:#7c5cff;
-    --purple:#a78bfa;
+    --primary2:#a78bfa;
     --cyan:#38d9ff;
     --pink:#f472b6;
     --green:#34d399;
     --red:#fb7185;
     --yellow:#facc15;
-    --white:#f8fafc;
-    --muted:#9ba5bd;
-    --border:rgba(255,255,255,.10);
+    --text:#f8fafc;
+    --muted:#929bb5;
+    --line:rgba(255,255,255,.10);
 }
 
-html,body{
-    min-height:100%;
+html{
+    scroll-behavior:smooth;
 }
 
 body{
+    min-height:100vh;
+    color:var(--text);
+
     font-family:
         Inter,
-        ui-sans-serif,
         system-ui,
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
         sans-serif;
 
-    color:var(--white);
     background:
         radial-gradient(
-            circle at 15% 15%,
-            rgba(124,92,255,.22),
+            circle at 10% 10%,
+            rgba(124,92,255,.20),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 15%,
+            rgba(56,217,255,.12),
             transparent 28%
         ),
         radial-gradient(
-            circle at 85% 20%,
-            rgba(56,217,255,.13),
-            transparent 25%
-        ),
-        radial-gradient(
             circle at 50% 100%,
-            rgba(244,114,182,.12),
+            rgba(244,114,182,.10),
             transparent 35%
         ),
         var(--bg);
@@ -69,16 +72,17 @@ body::before{
     position:fixed;
     inset:0;
     pointer-events:none;
-    opacity:.35;
+
+    opacity:.25;
 
     background-image:
         linear-gradient(
-            rgba(255,255,255,.025) 1px,
+            rgba(255,255,255,.035) 1px,
             transparent 1px
         ),
         linear-gradient(
             90deg,
-            rgba(255,255,255,.025) 1px,
+            rgba(255,255,255,.035) 1px,
             transparent 1px
         );
 
@@ -99,14 +103,14 @@ button{
     display:none!important;
 }
 
-/* =========================
+/* ==================================================
    TOPBAR
-========================= */
+================================================== */
 
 .topbar{
     position:sticky;
     top:0;
-    z-index:100;
+    z-index:1000;
 
     height:68px;
 
@@ -116,19 +120,19 @@ button{
 
     padding:0 24px;
 
-    background:rgba(8,10,24,.82);
+    background:rgba(8,11,31,.86);
     backdrop-filter:blur(20px);
 
-    border-bottom:1px solid var(--border);
+    border-bottom:1px solid var(--line);
 }
 
 .brand{
     display:flex;
     align-items:center;
-    gap:11px;
+    gap:10px;
 }
 
-.brand-icon{
+.brand-logo{
     width:40px;
     height:40px;
 
@@ -137,8 +141,6 @@ button{
 
     border-radius:13px;
 
-    font-size:21px;
-
     background:
         linear-gradient(
             135deg,
@@ -146,19 +148,26 @@ button{
             var(--pink)
         );
 
+    font-size:21px;
+
     box-shadow:
-        0 0 25px rgba(124,92,255,.35);
+        0 0 30px rgba(124,92,255,.3);
 }
 
-.brand-text strong{
+.brand strong{
     display:block;
-    font-size:13px;
-    letter-spacing:.4px;
+    font-size:12px;
+    letter-spacing:.5px;
 }
 
-.brand-text small{
+.brand small{
+    display:block;
+    margin-top:2px;
+
     color:var(--muted);
-    font-size:9px;
+
+    font-size:8px;
+    letter-spacing:.5px;
 }
 
 .top-actions{
@@ -171,11 +180,14 @@ button{
     width:40px;
     height:40px;
 
-    border:1px solid var(--border);
+    display:grid;
+    place-items:center;
+
+    border:1px solid var(--line);
     border-radius:12px;
 
+    background:rgba(255,255,255,.05);
     color:white;
-    background:rgba(255,255,255,.06);
 
     font-size:17px;
 }
@@ -187,51 +199,66 @@ button{
 
     text-align:center;
 
+    border:1px solid var(--line);
     border-radius:12px;
-
-    border:1px solid var(--border);
 
     background:rgba(255,255,255,.05);
 
     font-size:12px;
-    font-weight:900;
+    font-weight:950;
 }
 
 .timer.warning{
-    color:#fecaca;
-    border-color:rgba(251,113,133,.7);
+    color:#fecdd3;
 
-    animation:pulse 1s infinite;
+    border-color:
+        rgba(251,113,133,.65);
+
+    animation:timerPulse 1s infinite;
 }
 
-@keyframes pulse{
+@keyframes timerPulse{
     50%{
         box-shadow:
-            0 0 0 5px rgba(251,113,133,.10);
+            0 0 0 5px
+            rgba(251,113,133,.08);
     }
 }
 
-/* =========================
-   MAIN
-========================= */
+/* ==================================================
+   CONTAINER
+================================================== */
 
 .container{
-    width:min(1100px,calc(100% - 28px));
+    width:min(1080px,calc(100% - 28px));
     margin:auto;
-    padding:35px 0 55px;
+    padding:30px 0 60px;
 }
 
-/* =========================
+/* ==================================================
    START PAGE
-========================= */
+================================================== */
+
+.start-wrap{
+    min-height:
+        calc(100vh - 130px);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
 
 .start-card{
-    width:min(620px,100%);
-    margin:45px auto 0;
+    width:min(570px,100%);
 
-    padding:40px;
+    position:relative;
+
+    padding:38px;
 
     text-align:center;
+
+    border:1px solid var(--line);
+    border-radius:30px;
 
     background:
         linear-gradient(
@@ -240,15 +267,12 @@ button{
             rgba(255,255,255,.025)
         );
 
-    border:1px solid var(--border);
-    border-radius:30px;
-
     backdrop-filter:blur(25px);
 
     box-shadow:
-        0 35px 100px rgba(0,0,0,.35);
+        0 35px 100px
+        rgba(0,0,0,.35);
 
-    position:relative;
     overflow:hidden;
 }
 
@@ -261,7 +285,7 @@ button{
     height:260px;
 
     top:-160px;
-    right:-100px;
+    right:-110px;
 
     border-radius:50%;
 
@@ -282,53 +306,57 @@ button{
     height:220px;
 
     bottom:-160px;
-    left:-90px;
+    left:-100px;
 
     border-radius:50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(56,217,255,.15),
+            rgba(56,217,255,.14),
             transparent 70%
         );
 }
 
-.brain{
-    width:120px;
-    height:120px;
+.hero-icon{
+    width:105px;
+    height:105px;
 
     margin:0 auto 22px;
 
     display:grid;
     place-items:center;
 
-    border-radius:36px;
+    position:relative;
+    z-index:2;
 
-    font-size:65px;
+    border-radius:31px;
+
+    font-size:57px;
 
     background:
         linear-gradient(
-            135deg,
+            145deg,
             rgba(124,92,255,.20),
-            rgba(56,217,255,.10)
+            rgba(56,217,255,.08)
         );
 
-    border:1px solid rgba(255,255,255,.10);
+    border:1px solid var(--line);
 
     box-shadow:
-        0 0 50px rgba(124,92,255,.15);
+        0 0 50px
+        rgba(124,92,255,.12);
 
-    animation:float 3s ease-in-out infinite;
+    animation:heroFloat 3s ease-in-out infinite;
 }
 
-@keyframes float{
+@keyframes heroFloat{
     0%,100%{
         transform:translateY(0);
     }
 
     50%{
-        transform:translateY(-8px);
+        transform:translateY(-7px);
     }
 }
 
@@ -337,44 +365,45 @@ button{
     z-index:2;
 
     font-size:
-        clamp(28px,6vw,43px);
+        clamp(30px,6vw,43px);
 
-    line-height:1.05;
+    line-height:1.02;
+
+    letter-spacing:-1.5px;
 
     background:
         linear-gradient(
             90deg,
-            #ffffff,
+            #fff,
             #c4b5fd,
             #67e8f9
         );
 
     -webkit-background-clip:text;
     color:transparent;
-
-    margin-bottom:7px;
 }
 
-.start-card .chapter{
+.subtitle{
     position:relative;
     z-index:2;
 
+    margin-top:8px;
+    margin-bottom:25px;
+
     color:var(--muted);
 
-    font-size:12px;
-
-    margin-bottom:28px;
+    font-size:11px;
 }
 
 .form{
     position:relative;
-    z-index:2;
+    z-index:3;
 
     text-align:left;
 }
 
 .field{
-    margin-bottom:13px;
+    margin-bottom:12px;
 }
 
 .field label{
@@ -382,86 +411,89 @@ button{
 
     margin-bottom:6px;
 
-    font-size:11px;
-    font-weight:800;
+    color:#dce3f2;
 
-    color:#dbe3f3;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:.4px;
 }
 
 .field input,
 .field select{
     width:100%;
-
     height:48px;
 
     padding:0 14px;
 
+    outline:none;
+
     color:white;
 
-    background:rgba(255,255,255,.055);
-
-    border:1px solid var(--border);
+    border:1px solid var(--line);
     border-radius:13px;
 
-    outline:none;
+    background:rgba(255,255,255,.045);
+
+    transition:.2s;
 }
 
 .field input::placeholder{
-    color:#6f7890;
+    color:#69728b;
 }
 
 .field input:focus,
 .field select:focus{
-    border-color:var(--primary);
+    border-color:
+        rgba(124,92,255,.75);
 
     box-shadow:
-        0 0 0 4px rgba(124,92,255,.10);
+        0 0 0 4px
+        rgba(124,92,255,.10);
 }
 
 .field select option{
-    background:#11152b;
-    color:white;
+    background:#11162e;
 }
 
-.two-column{
+.two-field{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:12px;
+    gap:10px;
 }
 
 .exam-info{
     position:relative;
-    z-index:2;
+    z-index:3;
 
     display:flex;
     justify-content:center;
-    gap:20px;
+    gap:25px;
+
+    margin:17px 0;
 
     color:var(--muted);
 
-    font-size:11px;
-
-    margin:18px 0;
+    font-size:10px;
 }
 
-.exam-info b{
-    color:#dce4f5;
+.exam-info strong{
+    color:#e7edf8;
 }
 
-.start-button{
-    position:relative;
-    z-index:2;
-
+.start-btn{
     width:100%;
     height:52px;
+
+    position:relative;
+    z-index:3;
 
     border:0;
     border-radius:15px;
 
     color:white;
 
+    font-size:13px;
     font-weight:950;
-    font-size:14px;
 
     background:
         linear-gradient(
@@ -471,131 +503,145 @@ button{
         );
 
     box-shadow:
-        0 14px 35px rgba(124,92,255,.28);
+        0 15px 35px
+        rgba(124,92,255,.28);
 
     transition:.2s;
 }
 
-.start-button:hover{
+.start-btn:hover{
     transform:translateY(-2px);
 
     box-shadow:
-        0 18px 40px rgba(124,92,255,.38);
+        0 20px 42px
+        rgba(124,92,255,.38);
 }
-
-.teacher{
-    position:relative;
-    z-index:2;
-
-    margin-top:13px;
-
-    color:#737d94;
-
-    font-size:9px;
-}
-
-/* MUSIC */
 
 .music-control{
     position:relative;
-    z-index:2;
-
-    margin-top:15px;
+    z-index:3;
 
     display:flex;
     align-items:center;
     gap:10px;
 
-    padding:10px 12px;
+    margin-top:13px;
+    padding:9px 11px;
 
-    border-radius:13px;
+    border:1px solid var(--line);
+    border-radius:12px;
 
-    background:rgba(255,255,255,.04);
-
-    border:1px solid var(--border);
+    background:rgba(255,255,255,.035);
 }
 
 .music-control span{
-    font-size:11px;
     white-space:nowrap;
+
+    color:#b6bfd1;
+
+    font-size:9px;
 }
 
 .volume{
     flex:1;
+
     accent-color:var(--primary);
+
+    cursor:pointer;
 }
 
-/* =========================
-   EXAM
-========================= */
+.teacher{
+    position:relative;
+    z-index:3;
+
+    margin-top:13px;
+
+    color:#69728b;
+
+    font-size:8px;
+}
+
+/* ==================================================
+   EXAM LAYOUT
+================================================== */
 
 .exam-layout{
     display:grid;
-    grid-template-columns:minmax(0,1fr) 250px;
-    gap:17px;
+
+    grid-template-columns:
+        minmax(0,1fr)
+        245px;
+
+    gap:16px;
 }
 
 .exam-card,
 .sidebar{
+    border:1px solid var(--line);
+    border-radius:25px;
+
     background:
         linear-gradient(
             145deg,
             rgba(255,255,255,.065),
-            rgba(255,255,255,.025)
+            rgba(255,255,255,.022)
         );
-
-    border:1px solid var(--border);
-    border-radius:25px;
 
     backdrop-filter:blur(20px);
 
     box-shadow:
-        0 25px 70px rgba(0,0,0,.28);
+        0 25px 70px
+        rgba(0,0,0,.25);
 }
 
 .exam-card{
-    padding:25px;
+    padding:23px;
 }
 
-.question-top{
+.question-header{
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
 }
 
 .question-number{
-    font-weight:950;
     font-size:13px;
+    font-weight:950;
 }
 
 .level{
-    padding:5px 9px;
-
-    border-radius:30px;
-
-    background:rgba(124,92,255,.13);
-
-    color:#c4b5fd;
-
-    font-size:9px;
-    font-weight:900;
-}
-
-.progress{
-    height:7px;
-
-    margin:16px 0 22px;
+    padding:5px 10px;
 
     border-radius:20px;
 
-    overflow:hidden;
+    color:#c4b5fd;
 
-    background:rgba(255,255,255,.07);
+    background:
+        rgba(124,92,255,.12);
+
+    border:1px solid
+        rgba(124,92,255,.18);
+
+    font-size:8px;
+    font-weight:950;
 }
 
-.progress-bar{
-    width:0;
+.progress-track{
+    width:100%;
+    height:7px;
+
+    margin:15px 0 20px;
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.065);
+}
+
+.progress-fill{
     height:100%;
+    width:0;
 
     border-radius:20px;
 
@@ -610,30 +656,34 @@ button{
     transition:.35s;
 }
 
-/* QUESTION ILLUSTRATION */
+/* ==================================================
+   ILLUSTRATION
+================================================== */
 
 .illustration{
-    height:210px;
-
-    margin-bottom:20px;
+    width:100%;
+    height:235px;
 
     position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin-bottom:21px;
+
     overflow:hidden;
 
-    display:grid;
-    place-items:center;
-
-    border-radius:21px;
+    border:1px solid var(--line);
+    border-radius:22px;
 
     background:
         radial-gradient(
             circle at 50% 50%,
-            rgba(124,92,255,.16),
-            transparent 50%
+            rgba(124,92,255,.14),
+            transparent 48%
         ),
         rgba(255,255,255,.025);
-
-    border:1px solid var(--border);
 }
 
 .illustration::before{
@@ -644,82 +694,196 @@ button{
 
     background-image:
         radial-gradient(
-            rgba(255,255,255,.13) 1px,
+            rgba(255,255,255,.12) 1px,
             transparent 1px
         );
 
-    background-size:22px 22px;
+    background-size:24px 24px;
 
-    opacity:.35;
+    opacity:.32;
 }
 
-.illustration-emoji{
+.scene{
+    width:min(470px,92%);
+    height:190px;
+
     position:relative;
-    z-index:2;
 
-    font-size:80px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
 
-    filter:
-        drop-shadow(
-            0 15px 20px rgba(0,0,0,.35)
+/* Main object */
+.scene-main{
+    position:relative;
+    z-index:5;
+
+    width:108px;
+    height:108px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(124,92,255,.18),
+            rgba(56,217,255,.09)
         );
 
-    animation:float 3s ease-in-out infinite;
+    border:1px solid
+        rgba(255,255,255,.12);
+
+    box-shadow:
+        0 20px 45px
+        rgba(0,0,0,.25);
+
+    font-size:55px;
+
+    animation:sceneFloat 3s ease-in-out infinite;
 }
 
-.bubble{
+@keyframes sceneFloat{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-5px);
+    }
+}
+
+.scene-card{
     position:absolute;
-    z-index:3;
+    z-index:4;
 
-    padding:7px 10px;
+    min-width:95px;
 
-    border-radius:10px;
+    padding:10px 13px;
 
-    background:rgba(8,10,24,.78);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
 
-    border:1px solid var(--border);
+    border:1px solid
+        rgba(255,255,255,.12);
 
-    color:#dce4f5;
+    border-radius:13px;
+
+    background:
+        rgba(10,14,36,.80);
+
+    backdrop-filter:blur(10px);
+
+    box-shadow:
+        0 12px 25px
+        rgba(0,0,0,.25);
+
+    color:#dce4f3;
 
     font-size:9px;
     font-weight:900;
 
-    animation:float 3s ease-in-out infinite;
+    white-space:nowrap;
 }
 
-.b1{
-    top:17%;
-    left:8%;
+.scene-card::after{
+    content:"";
+    position:absolute;
 }
 
-.b2{
-    top:20%;
-    right:8%;
-
-    animation-delay:.6s;
+.card-left{
+    left:2%;
+    top:18%;
 }
 
-.b3{
-    bottom:16%;
-    left:12%;
-
-    animation-delay:1s;
+.card-right{
+    right:2%;
+    top:18%;
 }
 
-.b4{
-    bottom:13%;
-    right:12%;
-
-    animation-delay:1.4s;
+.card-bottom-left{
+    left:7%;
+    bottom:8%;
 }
+
+.card-bottom-right{
+    right:7%;
+    bottom:8%;
+}
+
+/* Connector lines */
+.connector{
+    position:absolute;
+    z-index:2;
+
+    height:2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(167,139,250,.65),
+            transparent
+        );
+
+    transform-origin:left center;
+}
+
+.connector.one{
+    width:115px;
+    left:23%;
+    top:39%;
+    transform:rotate(8deg);
+}
+
+.connector.two{
+    width:115px;
+    right:22%;
+    top:39%;
+    transform:rotate(172deg);
+}
+
+.connector.three{
+    width:105px;
+    left:26%;
+    bottom:30%;
+    transform:rotate(-10deg);
+}
+
+.connector.four{
+    width:105px;
+    right:24%;
+    bottom:30%;
+    transform:rotate(190deg);
+}
+
+/* ==================================================
+   QUESTION
+================================================== */
 
 .question-text{
+    margin-bottom:16px;
+
+    color:#f4f7fb;
+
     font-size:
-        clamp(18px,3vw,24px);
+        clamp(18px,2.7vw,23px);
 
     line-height:1.5;
 
-    margin-bottom:17px;
+    letter-spacing:-.2px;
+}
+
+.options{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
 }
 
 .option{
@@ -729,19 +893,16 @@ button{
     align-items:center;
     gap:11px;
 
-    padding:13px;
-
-    margin:9px 0;
+    padding:12px;
 
     text-align:left;
 
-    color:white;
+    color:#edf2f8;
+
+    border:1px solid var(--line);
+    border-radius:14px;
 
     background:rgba(255,255,255,.035);
-
-    border:1px solid var(--border);
-
-    border-radius:14px;
 
     transition:.18s;
 }
@@ -751,13 +912,20 @@ button{
 
     border-color:
         rgba(124,92,255,.55);
+
+    background:
+        rgba(124,92,255,.06);
 }
 
 .option.selected{
+    border-color:var(--primary);
+
     background:
         rgba(124,92,255,.14);
 
-    border-color:var(--primary);
+    box-shadow:
+        0 5px 20px
+        rgba(124,92,255,.08);
 }
 
 .letter{
@@ -769,26 +937,32 @@ button{
 
     border-radius:10px;
 
-    background:rgba(255,255,255,.07);
+    background:rgba(255,255,255,.065);
 
+    color:#b9c2d4;
+
+    font-size:11px;
     font-weight:950;
 }
 
 .selected .letter{
+    color:white;
+
     background:
         linear-gradient(
             135deg,
             var(--primary),
-            var(--purple)
+            var(--primary2)
         );
 }
 
 .nav{
     display:flex;
     justify-content:space-between;
+
     gap:10px;
 
-    margin-top:22px;
+    margin-top:20px;
 }
 
 .btn{
@@ -796,129 +970,151 @@ button{
 
     padding:0 17px;
 
+    border:1px solid var(--line);
     border-radius:12px;
-
-    font-size:12px;
-    font-weight:900;
 
     color:white;
 
-    border:1px solid var(--border);
+    background:
+        rgba(255,255,255,.05);
 
-    background:rgba(255,255,255,.06);
+    font-size:11px;
+    font-weight:900;
 }
 
 .btn.primary{
+    border:0;
+
     background:
         linear-gradient(
             135deg,
             var(--primary),
             #9b6cff
         );
-
-    border:0;
 }
 
 .btn:disabled{
-    opacity:.35;
+    opacity:.3;
     cursor:not-allowed;
 }
 
-/* =========================
+/* ==================================================
    SIDEBAR
-========================= */
+================================================== */
 
 .sidebar{
-    padding:19px;
     height:max-content;
+
+    padding:17px;
+
+    position:sticky;
+    top:85px;
 }
 
-.student{
+.student-box{
     padding:13px;
 
-    margin-bottom:18px;
+    margin-bottom:17px;
 
+    border:1px solid var(--line);
     border-radius:14px;
 
-    background:rgba(255,255,255,.045);
-
-    border:1px solid var(--border);
+    background:
+        rgba(255,255,255,.035);
 }
 
-.student strong{
+.student-box strong{
     display:block;
 
-    font-size:12px;
+    font-size:11px;
 
     margin-bottom:3px;
 }
 
-.student span{
+.student-box span{
     color:var(--muted);
-    font-size:10px;
+    font-size:9px;
 }
 
 .sidebar-title{
-    font-size:12px;
-    font-weight:900;
+    margin-bottom:10px;
 
-    margin-bottom:11px;
+    font-size:10px;
+    font-weight:950;
+    letter-spacing:.5px;
 }
 
 .numbers{
     display:grid;
-    grid-template-columns:repeat(5,1fr);
+
+    grid-template-columns:
+        repeat(5,1fr);
+
     gap:6px;
 }
 
 .num{
-    height:32px;
+    height:31px;
 
+    border:1px solid var(--line);
     border-radius:8px;
 
-    color:#cbd5e1;
+    color:#b7c0d2;
 
-    background:rgba(255,255,255,.035);
+    background:
+        rgba(255,255,255,.035);
 
-    border:1px solid var(--border);
-
-    font-size:10px;
+    font-size:9px;
     font-weight:900;
-}
-
-.num.done{
-    color:#86efac;
-    background:rgba(52,211,153,.10);
-    border-color:rgba(52,211,153,.30);
 }
 
 .num.current{
     color:white;
-    background:var(--primary);
+
     border-color:var(--primary);
+
+    background:var(--primary);
 }
 
-.submit{
+.num.done{
+    color:#86efac;
+
+    border-color:
+        rgba(52,211,153,.30);
+
+    background:
+        rgba(52,211,153,.09);
+}
+
+.submit-btn{
     width:100%;
-    margin-top:18px;
+
+    margin-top:16px;
 
     color:#fecdd3;
 
-    border-color:rgba(251,113,133,.25);
-    background:rgba(251,113,133,.08);
+    border-color:
+        rgba(251,113,133,.25);
+
+    background:
+        rgba(251,113,133,.07);
 }
 
-/* =========================
+/* ==================================================
    RESULT
-========================= */
+================================================== */
 
 .result-card{
     width:min(700px,100%);
-    margin:35px auto;
 
-    padding:38px;
+    margin:30px auto;
+
+    padding:35px;
 
     text-align:center;
+
+    border:1px solid var(--line);
+    border-radius:28px;
 
     background:
         linear-gradient(
@@ -927,38 +1123,40 @@ button{
             rgba(255,255,255,.025)
         );
 
-    border:1px solid var(--border);
-    border-radius:28px;
-
     backdrop-filter:blur(22px);
 
     box-shadow:
-        0 30px 90px rgba(0,0,0,.32);
+        0 30px 90px
+        rgba(0,0,0,.30);
 }
 
 .result-emoji{
-    font-size:75px;
+    font-size:72px;
 
-    animation:float 2s ease-in-out infinite;
+    animation:heroFloat 2s ease-in-out infinite;
 }
 
 .result-card h1{
-    font-size:30px;
-    margin:8px 0;
+    margin-top:7px;
+
+    font-size:28px;
 }
 
 .result-name{
+    margin-top:5px;
+
     color:var(--muted);
-    font-size:12px;
+
+    font-size:11px;
 }
 
 .score{
-    font-size:85px;
+    margin:8px 0;
+
+    font-size:86px;
     font-weight:1000;
 
-    line-height:1.1;
-
-    margin:10px 0;
+    line-height:1;
 
     background:
         linear-gradient(
@@ -974,33 +1172,34 @@ button{
 
 .result-detail{
     color:var(--muted);
-    font-size:12px;
-    line-height:1.7;
-}
 
-.send-status{
-    margin-top:10px;
+    font-size:11px;
+
+    line-height:1.7;
 }
 
 .review{
     margin-top:25px;
+
     text-align:left;
 
-    border-top:1px solid var(--border);
+    border-top:1px solid var(--line);
 }
 
 .review h3{
-    font-size:14px;
-    margin:18px 0 10px;
+    margin:17px 0 10px;
+
+    font-size:13px;
 }
 
 .review-item{
-    padding:11px 0;
+    padding:10px 0;
 
-    border-bottom:1px solid var(--border);
+    border-bottom:1px solid var(--line);
 
-    font-size:11px;
-    line-height:1.5;
+    font-size:10px;
+
+    line-height:1.55;
 }
 
 .correct{
@@ -1011,18 +1210,19 @@ button{
     color:#fda4af;
 }
 
-/* =========================
+/* ==================================================
    CONFETTI
-========================= */
+================================================== */
 
 .confetti{
     position:fixed;
     inset:0;
 
-    overflow:hidden;
+    z-index:9999;
+
     pointer-events:none;
 
-    z-index:999;
+    overflow:hidden;
 }
 
 .confetti span{
@@ -1032,10 +1232,11 @@ button{
     font-size:22px;
 
     animation:
-        fall 3s linear forwards;
+        confettiFall 3.5s
+        linear forwards;
 }
 
-@keyframes fall{
+@keyframes confettiFall{
     to{
         transform:
             translateY(110vh)
@@ -1045,9 +1246,9 @@ button{
     }
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* ==================================================
+   RESPONSIVE
+================================================== */
 
 @media(max-width:800px){
 
@@ -1056,117 +1257,211 @@ button{
     }
 
     .sidebar{
+        position:static;
         order:2;
     }
 
     .numbers{
-        grid-template-columns:repeat(10,1fr);
+        grid-template-columns:
+            repeat(10,1fr);
     }
 }
 
 @media(max-width:550px){
 
     .topbar{
-        padding:0 12px;
         height:60px;
+        padding:0 11px;
     }
 
-    .brand-icon{
-        width:36px;
-        height:36px;
-        font-size:18px;
+    .brand-logo{
+        width:35px;
+        height:35px;
+
+        border-radius:11px;
+
+        font-size:17px;
     }
 
-    .brand-text strong{
-        font-size:10px;
+    .brand strong{
+        font-size:9px;
     }
 
-    .brand-text small{
-        font-size:7px;
+    .brand small{
+        font-size:6px;
     }
 
     .timer{
-        min-width:78px;
-        font-size:10px;
+        min-width:73px;
+
+        padding:8px;
+
+        font-size:9px;
+    }
+
+    .music-btn{
+        width:35px;
+        height:35px;
     }
 
     .container{
         width:calc(100% - 12px);
-        padding-top:14px;
+        padding-top:12px;
+    }
+
+    .start-wrap{
+        min-height:
+            calc(100vh - 90px);
     }
 
     .start-card{
-        margin-top:15px;
-        padding:24px 17px;
+        padding:25px 16px;
         border-radius:23px;
     }
 
-    .brain{
-        width:95px;
-        height:95px;
-        font-size:52px;
-        border-radius:28px;
+    .hero-icon{
+        width:88px;
+        height:88px;
+
         margin-bottom:17px;
+
+        border-radius:25px;
+
+        font-size:47px;
     }
 
     .start-card h1{
         font-size:29px;
     }
 
-    .start-card .chapter{
-        font-size:10px;
-        margin-bottom:22px;
+    .subtitle{
+        margin-bottom:20px;
+        font-size:9px;
     }
 
-    .two-column{
-        grid-template-columns:1fr 1fr;
-        gap:8px;
+    .two-field{
+        gap:7px;
+    }
+
+    .field input,
+    .field select{
+        height:46px;
+
+        padding:0 11px;
+
+        font-size:11px;
     }
 
     .exam-info{
-        gap:12px;
+        gap:15px;
         font-size:9px;
     }
 
     .exam-card{
-        padding:17px;
+        padding:15px;
         border-radius:20px;
     }
 
     .illustration{
-        height:165px;
-        border-radius:17px;
+        height:205px;
+        margin-bottom:17px;
+        border-radius:18px;
     }
 
-    .illustration-emoji{
-        font-size:65px;
+    .scene{
+        height:170px;
+        width:96%;
     }
 
-    .bubble{
+    .scene-main{
+        width:82px;
+        height:82px;
+
+        border-radius:23px;
+
+        font-size:42px;
+    }
+
+    .scene-card{
+        min-width:auto;
+
+        padding:7px 9px;
+
+        border-radius:9px;
+
         font-size:7px;
-        padding:5px 7px;
+    }
+
+    .card-left{
+        left:0;
+        top:12%;
+    }
+
+    .card-right{
+        right:0;
+        top:12%;
+    }
+
+    .card-bottom-left{
+        left:3%;
+        bottom:8%;
+    }
+
+    .card-bottom-right{
+        right:3%;
+        bottom:8%;
+    }
+
+    .connector.one{
+        width:75px;
+        left:20%;
+    }
+
+    .connector.two{
+        width:75px;
+        right:19%;
+    }
+
+    .connector.three{
+        width:70px;
+        left:22%;
+    }
+
+    .connector.four{
+        width:70px;
+        right:20%;
     }
 
     .question-text{
-        font-size:18px;
+        font-size:17px;
     }
 
     .option{
-        padding:11px;
-        font-size:12px;
+        padding:10px;
+
+        font-size:11px;
     }
 
     .letter{
-        min-width:31px;
-        height:31px;
+        min-width:30px;
+        height:30px;
     }
 
-    .sidebar{
-        padding:15px;
+    .btn{
+        padding:0 13px;
+        font-size:10px;
     }
 
     .result-card{
-        padding:25px 18px;
+        padding:26px 17px;
+    }
+
+    .result-emoji{
+        font-size:60px;
+    }
+
+    .result-card h1{
+        font-size:23px;
     }
 
     .score{
@@ -1177,30 +1472,39 @@ button{
 </style>
 </head>
 
+
 <body>
 
-<!-- =========================
-     AUDIO
-========================= -->
 
-<audio id="bgMusic" loop preload="auto">
-    <source src="music/backsound.mp3" type="audio/mpeg">
+<!-- ==================================================
+     AUDIO
+================================================== -->
+
+<audio
+    id="bgMusic"
+    loop
+    preload="auto">
+
+    <source
+        src="music/backsound.mp3"
+        type="audio/mpeg">
+
 </audio>
 
 
-<!-- =========================
+<!-- ==================================================
      TOPBAR
-========================= -->
+================================================== -->
 
 <header class="topbar">
 
     <div class="brand">
 
-        <div class="brand-icon">
+        <div class="brand-logo">
             🧠
         </div>
 
-        <div class="brand-text">
+        <div>
 
             <strong>
                 UJIAN INFORMATIKA
@@ -1221,13 +1525,18 @@ button{
             class="music-btn"
             id="musicBtn"
             onclick="toggleMusic()">
+
             🔊
+
         </button>
+
 
         <div
             class="timer"
             id="timer">
+
             40:00
+
         </div>
 
     </div>
@@ -1238,141 +1547,170 @@ button{
 <main class="container">
 
 
-<!-- =========================
-     START
-========================= -->
+<!-- ==================================================
+     START PAGE
+================================================== -->
 
 <section
-    class="start-card"
-    id="startPage">
+    id="startPage"
+    class="start-wrap">
 
 
-    <div class="brain">
-        🧠
-    </div>
+    <div class="start-card">
 
 
-    <h1>
-        Berpikir<br>
-        Komputasional
-    </h1>
-
-
-    <p class="chapter">
-        Ulangan Harian • Kelas VII
-    </p>
-
-
-    <div class="form">
-
-
-        <div class="field">
-
-            <label>
-                NAMA LENGKAP
-            </label>
-
-            <input
-                id="studentName"
-                type="text"
-                placeholder="Masukkan nama kamu">
-
+        <div class="hero-icon">
+            🧠
         </div>
 
 
-        <div class="two-column">
+        <h1>
+            Berpikir<br>
+            Komputasional
+        </h1>
 
 
-            <div class="field">
-
-                <label>
-                    KELAS
-                </label>
-
-                <select id="studentClass">
-
-                    <option value="">
-                        Pilih kelas
-                    </option>
-
-                    <option>7A</option>
-                    <option>7B</option>
-                    <option>7C</option>
-                    <option>7D</option>
-                    <option>7E</option>
-                    <option>7F</option>
-                    <option>7G</option>
-                    <option>7H</option>
-
-                </select>
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    NO. ABSEN
-                </label>
-
-                <select id="studentNumber">
-
-                    <option value="">
-                        Pilih absen
-                    </option>
-
-                </select>
-
-            </div>
-
-
-        </div>
-
-
-        <div class="exam-info">
-
-            <span>
-                📝 <b>25 Soal</b>
-            </span>
-
-            <span>
-                ⏱️ <b>40 Menit</b>
-            </span>
-
-        </div>
-
-
-        <button
-            class="start-button"
-            onclick="startExam()">
-
-            🚀 MULAI UJIAN
-
-        </button>
-
-
-        <div class="music-control">
-
-            <span id="musicText">
-                🎵 Musik ON
-            </span>
-
-            <input
-                id="volume"
-                class="volume"
-                type="range"
-                min="0"
-                max="100"
-                value="80"
-                oninput="changeVolume(this.value)">
-
-        </div>
-
-
-        <p class="teacher">
-            Guru Pengampu • Farah Nisa
+        <p class="subtitle">
+            Ulangan Harian • Kelas VII
         </p>
 
+
+        <div class="form">
+
+
+            <div class="field">
+
+                <label>
+                    NAMA LENGKAP
+                </label>
+
+                <input
+                    id="studentName"
+                    type="text"
+                    autocomplete="off"
+                    placeholder="Masukkan nama kamu">
+
+            </div>
+
+
+            <div class="two-field">
+
+
+                <div class="field">
+
+                    <label>
+                        KELAS
+                    </label>
+
+                    <select id="studentClass">
+
+                        <option value="">
+                            Pilih kelas
+                        </option>
+
+                        <option value="7A">
+                            7A
+                        </option>
+
+                        <option value="7B">
+                            7B
+                        </option>
+
+                        <option value="7C">
+                            7C
+                        </option>
+
+                        <option value="7D">
+                            7D
+                        </option>
+
+                        <option value="7E">
+                            7E
+                        </option>
+
+                        <option value="7F">
+                            7F
+                        </option>
+
+                        <option value="7G">
+                            7G
+                        </option>
+
+                        <option value="7H">
+                            7H
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        NO. ABSEN
+                    </label>
+
+                    <select id="studentNumber">
+
+                        <option value="">
+                            Pilih absen
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="exam-info">
+
+                <span>
+                    📝 <strong>25 Soal</strong>
+                </span>
+
+                <span>
+                    ⏱️ <strong>40 Menit</strong>
+                </span>
+
+            </div>
+
+
+            <button
+                class="start-btn"
+                onclick="startExam()">
+
+                🚀 MULAI UJIAN
+
+            </button>
+
+
+            <div class="music-control">
+
+                <span id="musicText">
+                    🎵 Musik ON
+                </span>
+
+                <input
+                    class="volume"
+                    id="volume"
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="80"
+                    oninput="changeVolume(this.value)">
+
+            </div>
+
+
+            <p class="teacher">
+                Guru Pengampu • Farah Nisa
+            </p>
+
+
+        </div>
 
     </div>
 
@@ -1380,66 +1718,78 @@ button{
 
 
 
-<!-- =========================
-     EXAM
-========================= -->
+<!-- ==================================================
+     EXAM PAGE
+================================================== -->
 
 <section
-    class="exam-layout hidden"
-    id="examPage">
+    id="examPage"
+    class="exam-layout hidden">
 
 
     <div class="exam-card">
 
 
-        <div class="question-top">
+        <div class="question-header">
 
             <span
-                class="question-number"
-                id="questionNumber">
+                id="questionNumber"
+                class="question-number">
+
                 Soal 1 dari 25
+
             </span>
 
+
             <span
-                class="level"
-                id="questionLevel">
+                id="questionLevel"
+                class="level">
+
                 LOTS
+
             </span>
 
         </div>
 
 
-        <div class="progress">
+        <div class="progress-track">
 
             <div
-                class="progress-bar"
-                id="progressBar">
+                id="progressBar"
+                class="progress-fill">
+
             </div>
 
         </div>
 
 
+        <!-- ILUSTRASI -->
         <div
             id="illustration"
             class="illustration">
+
         </div>
 
 
         <h2
             id="questionText"
             class="question-text">
+
         </h2>
 
 
-        <div id="options">
+        <div
+            id="options"
+            class="options">
+
         </div>
 
 
         <div class="nav">
 
             <button
-                class="btn"
                 id="prevBtn"
+                class="btn"
                 onclick="previousQuestion()">
 
                 ← Sebelumnya
@@ -1448,8 +1798,8 @@ button{
 
 
             <button
-                class="btn primary"
                 id="nextBtn"
+                class="btn primary"
                 onclick="nextQuestion()">
 
                 Berikutnya →
@@ -1462,10 +1812,11 @@ button{
     </div>
 
 
+
     <aside class="sidebar">
 
 
-        <div class="student">
+        <div class="student-box">
 
             <strong id="sideName">
                 Nama Siswa
@@ -1484,13 +1835,14 @@ button{
 
 
         <div
-            class="numbers"
-            id="numbers">
+            id="numbers"
+            class="numbers">
+
         </div>
 
 
         <button
-            class="btn submit"
+            class="btn submit-btn"
             onclick="confirmSubmit()">
 
             🏁 Kumpulkan
@@ -1500,24 +1852,25 @@ button{
 
     </aside>
 
-
 </section>
 
 
 
-<!-- =========================
+<!-- ==================================================
      RESULT
-========================= -->
+================================================== -->
 
 <section
-    class="result-card hidden"
-    id="resultPage">
+    id="resultPage"
+    class="result-card hidden">
 
 
     <div
         id="resultEmoji"
         class="result-emoji">
-        🥳
+
+        🥳🎉
+
     </div>
 
 
@@ -1529,25 +1882,30 @@ button{
     <p
         id="resultName"
         class="result-name">
+
     </p>
 
 
     <div
         id="score"
         class="score">
+
         0
+
     </div>
 
 
     <p
         id="resultDetail"
         class="result-detail">
+
     </p>
 
 
     <p
         id="sendStatus"
-        class="result-detail send-status">
+        class="result-detail">
+
     </p>
 
 
@@ -1562,8 +1920,9 @@ button{
 
 
     <div
-        class="review"
-        id="review">
+        id="review"
+        class="review">
+
     </div>
 
 
@@ -1574,32 +1933,34 @@ button{
 
 
 <div
-    class="confetti"
-    id="confetti">
+    id="confetti"
+    class="confetti">
+
 </div>
 
 
 <script>
 
-/* =====================================================
-   GOOGLE APPS SCRIPT
-   GANTI DENGAN URL WEB APP KAMU
-===================================================== */
+/* ==================================================
+   GOOGLE SPREADSHEET
+   GANTI URL DI BAWAH DENGAN URL APPS SCRIPT
+================================================== */
 
 const GOOGLE_SCRIPT_URL =
     "TEMPEL_URL_APPS_SCRIPT_DI_SINI";
 
 
-/* =====================================================
+/* ==================================================
    SOAL
-===================================================== */
+================================================== */
 
 const questions = [
 
 {
     level:"LOTS",
     icon:"💻",
-    tags:["INFORMATIKA","KOMPUTASI"],
+    title:"INFORMATIKA",
+    cards:["DATA","INFORMASI","KOMPUTASI","SOLUSI"],
     question:
     "Informatika paling tepat dipahami sebagai bidang yang mempelajari cara...",
     options:[
@@ -1614,7 +1975,8 @@ const questions = [
 {
     level:"LOTS",
     icon:"🧩",
-    tags:["PECAH","MASALAH"],
+    title:"DEKOMPOSISI",
+    cards:["MASALAH","BAGIAN 1","BAGIAN 2","BAGIAN 3"],
     question:
     "Memecah masalah besar menjadi beberapa bagian yang lebih kecil disebut...",
     options:[
@@ -1629,7 +1991,8 @@ const questions = [
 {
     level:"MOTS",
     icon:"🔢",
-    tags:["2","4","6","8"],
+    title:"POLA ANGKA",
+    cards:["2","4","6","8"],
     question:
     "Perhatikan pola angka berikut: 2, 4, 6, 8, ... Angka berikutnya adalah...",
     options:[
@@ -1644,7 +2007,8 @@ const questions = [
 {
     level:"MOTS • LITERASI",
     icon:"📚",
-    tags:["POLA","KEBIASAAN"],
+    title:"MENCARI POLA",
+    cards:["SENIN","SELASA","RABU","POLA"],
     question:
     "Raka memperhatikan bahwa setiap hari sebelum pelajaran Informatika dimulai, guru selalu mengecek komputer. Raka menemukan keteraturan dari kegiatan tersebut. Proses yang dilakukan Raka merupakan...",
     options:[
@@ -1659,7 +2023,8 @@ const questions = [
 {
     level:"LOTS",
     icon:"✂️",
-    tags:["PENTING","PILIH"],
+    title:"ABSTRAKSI",
+    cards:["PENTING","PILIH","FOKUS","SISANYA"],
     question:
     "Dalam abstraksi, kita sebaiknya...",
     options:[
@@ -1674,7 +2039,8 @@ const questions = [
 {
     level:"MOTS",
     icon:"🗺️",
-    tags:["RUTE","SEKOLAH"],
+    title:"DENAH SEKOLAH",
+    cards:["LAB","ARAH","PINTU","SEPATU"],
     question:
     "Sebuah denah sekolah dibuat agar siswa mudah menemukan laboratorium. Informasi yang tidak diperlukan dalam denah tersebut adalah...",
     options:[
@@ -1689,7 +2055,8 @@ const questions = [
 {
     level:"LOTS",
     icon:"📋",
-    tags:["LANGKAH","URUT"],
+    title:"ALGORITMA",
+    cards:["LANGKAH 1","LANGKAH 2","LANGKAH 3","HASIL"],
     question:
     "Urutan langkah yang sistematis untuk menyelesaikan masalah disebut...",
     options:[
@@ -1704,7 +2071,8 @@ const questions = [
 {
     level:"MOTS",
     icon:"☕",
-    tags:["URUTAN","LANGKAH"],
+    title:"URUTAN LANGKAH",
+    cards:["SIAPKAN","MASUKKAN","TUANGKAN","ADUK"],
     question:
     "Urutan: siapkan gelas → masukkan teh → tuangkan air → tambahkan gula → aduk. Contoh tersebut menunjukkan...",
     options:[
@@ -1719,7 +2087,8 @@ const questions = [
 {
     level:"MOTS • NUMERASI",
     icon:"🧮",
-    tags:["3 × 8000","24.000"],
+    title:"HITUNG HARGA",
+    cards:["3 BUKU","×","Rp8.000","Rp24.000"],
     question:
     "Sebuah algoritma menghitung harga 3 buku. Setiap buku berharga Rp8.000. Hasil akhirnya adalah...",
     options:[
@@ -1734,7 +2103,8 @@ const questions = [
 {
     level:"MOTS",
     icon:"⚠️",
-    tags:["SALAH","URUTAN"],
+    title:"CEK ALGORITMA",
+    cards:["INPUT","PROSES","OUTPUT","URUT?"],
     question:
     "Jika langkah 'tampilkan hasil' dilakukan sebelum proses perhitungan selesai, masalah pada algoritma tersebut adalah...",
     options:[
@@ -1749,7 +2119,8 @@ const questions = [
 {
     level:"LOTS",
     icon:"🎯",
-    tags:["TUJUAN","BERHASIL"],
+    title:"EFEKTIF",
+    cards:["TUJUAN","HASIL","BERHASIL","SELESAI"],
     question:
     "Solusi yang efektif adalah solusi yang...",
     options:[
@@ -1764,7 +2135,8 @@ const questions = [
 {
     level:"LOTS",
     icon:"⚡",
-    tags:["HEMAT","WAKTU"],
+    title:"EFISIEN",
+    cards:["HEMAT","WAKTU","SUMBER DAYA","CEPAT"],
     question:
     "Solusi yang efisien adalah solusi yang...",
     options:[
@@ -1779,7 +2151,8 @@ const questions = [
 {
     level:"MOTS • NUMERASI",
     icon:"⏱️",
-    tags:["12 MENIT","7 MENIT"],
+    title:"BANDINGKAN",
+    cards:["A • 12 MENIT","B • 7 MENIT","HASIL SAMA","PILIH"],
     question:
     "Cara A membutuhkan 12 menit dan berhasil. Cara B membutuhkan 7 menit dan juga berhasil dengan sumber daya yang sama. Berdasarkan waktu, cara yang lebih efisien adalah...",
     options:[
@@ -1794,7 +2167,8 @@ const questions = [
 {
     level:"MOTS",
     icon:"🏆",
-    tags:["PILIH","TERBAIK"],
+    title:"OPTIMAL",
+    cards:["TUJUAN","BATASAN","HASIL","TERBAIK"],
     question:
     "Solusi optimal adalah solusi yang...",
     options:[
@@ -1809,7 +2183,8 @@ const questions = [
 {
     level:"HOTS • NUMERASI",
     icon:"🖨️",
-    tags:["20 ÷ 4","30 ÷ 5"],
+    title:"KECEPATAN",
+    cards:["A: 20 ÷ 4","B: 30 ÷ 5","5/menit","6/menit"],
     question:
     "Printer A mencetak 20 halaman dalam 4 menit. Printer B mencetak 30 halaman dalam 5 menit. Jika kualitas sama, printer mana yang lebih cepat?",
     options:[
@@ -1824,7 +2199,8 @@ const questions = [
 {
     level:"HOTS",
     icon:"🚗",
-    tags:["CEPAT","AMAN"],
+    title:"RUTE OPTIMAL",
+    cards:["RUTE A","MACET","RUTE B","LANCAR"],
     question:
     "Rute A menuju sekolah lebih cepat tetapi sering macet. Rute B sedikit lebih lama tetapi lancar. Jika sekolah harus tiba tepat waktu dan risiko terlambat harus kecil, pilihan yang lebih optimal adalah...",
     options:[
@@ -1839,7 +2215,8 @@ const questions = [
 {
     level:"HOTS • LITERASI",
     icon:"🧠",
-    tags:["MASALAH","SOLUSI"],
+    title:"MEMECAHKAN MASALAH",
+    cards:["WAKTU","ALAT","ANGGOTA","KEBUTUHAN"],
     question:
     "Sebuah kelompok kesulitan membuat jadwal piket karena banyak anggota memiliki kegiatan berbeda. Langkah pertama yang paling tepat adalah...",
     options:[
@@ -1854,7 +2231,8 @@ const questions = [
 {
     level:"HOTS",
     icon:"🧩",
-    tags:["BAGI","FITUR"],
+    title:"DEKOMPOSISI",
+    cards:["APLIKASI","LOGIN","CARI","PINJAM"],
     question:
     "Untuk membuat aplikasi perpustakaan sederhana, kelompok membagi pekerjaan menjadi fitur login, pencarian buku, peminjaman, dan pengembalian. Strategi tersebut merupakan...",
     options:[
@@ -1869,7 +2247,8 @@ const questions = [
 {
     level:"MOTS",
     icon:"📊",
-    tags:["POLA","DATA"],
+    title:"DATA",
+    cards:["SENIN","↑","SELASA","↑"],
     question:
     "Dalam data peminjaman buku, jumlah peminjaman selalu meningkat setiap hari Senin. Menemukan kecenderungan tersebut merupakan contoh...",
     options:[
@@ -1884,7 +2263,8 @@ const questions = [
 {
     level:"HOTS",
     icon:"🗺️",
-    tags:["PETA","PENTING"],
+    title:"ABSTRAKSI",
+    cards:["JALAN UTAMA","GANG","TUJUAN","RUTE"],
     question:
     "Sebuah aplikasi navigasi menampilkan jalan utama tetapi tidak menampilkan setiap gang kecil. Hal tersebut dilakukan agar pengguna lebih mudah memahami rute. Konsep yang digunakan adalah...",
     options:[
@@ -1899,7 +2279,8 @@ const questions = [
 {
     level:"HOTS • NUMERASI",
     icon:"📅",
-    tags:["09.00","10.00"],
+    title:"PENJADWALAN",
+    cards:["09.00","20 MENIT","20 MENIT","20 MENIT"],
     question:
     "Laboratorium tersedia pukul 09.00–10.00. Kelas A membutuhkan 20 menit, B 20 menit, dan C 20 menit. Apakah ketiganya dapat menggunakan lab tanpa bentrok?",
     options:[
@@ -1914,7 +2295,8 @@ const questions = [
 {
     level:"HOTS • NUMERASI",
     icon:"⏰",
-    tags:["BENTROK","JADWAL"],
+    title:"BENTROK JADWAL",
+    cards:["07.00","07.30","08.00","08.30"],
     question:
     "Jadwal A adalah 07.00–08.00 dan jadwal B adalah 07.30–08.30. Jika keduanya memakai ruangan yang sama, masalahnya adalah...",
     options:[
@@ -1929,7 +2311,8 @@ const questions = [
 {
     level:"HOTS",
     icon:"🎤",
-    tags:["4 × 10","40 MENIT"],
+    title:"PRESENTASI",
+    cards:["A • 10 M","B • 10 M","C • 10 M","D • 10 M"],
     question:
     "Empat kelompok harus presentasi. Setiap kelompok mendapat 10 menit dan tersedia 40 menit. Jadwal paling tepat adalah...",
     options:[
@@ -1944,7 +2327,8 @@ const questions = [
 {
     level:"HOTS • LITERASI",
     icon:"🤝",
-    tags:["TUJUAN","BATASAN"],
+    title:"BATASAN",
+    cards:["TUJUAN","WAKTU","ALAT","ANGGOTA"],
     question:
     "Ketika menyusun solusi, kita menemukan beberapa batasan seperti waktu, jumlah alat, dan jumlah anggota. Agar solusi benar-benar optimal, kita perlu...",
     options:[
@@ -1959,7 +2343,8 @@ const questions = [
 {
     level:"HOTS • NUMERASI",
     icon:"🧮",
-    tags:["5 × 10","60 MENIT"],
+    title:"HITUNG WAKTU",
+    cards:["60 MENIT","5 × 10","50 MENIT","SISA ?"],
     question:
     "Guru memiliki waktu 60 menit untuk 5 presentasi. Setiap presentasi membutuhkan 10 menit. Berapa menit tersisa untuk pergantian kelompok?",
     options:[
@@ -1974,9 +2359,9 @@ const questions = [
 ];
 
 
-/* =====================================================
+/* ==================================================
    STATE
-===================================================== */
+================================================== */
 
 let currentQuestion = 0;
 
@@ -1994,11 +2379,11 @@ let finished = false;
 let violations = 0;
 
 
-/* =====================================================
+/* ==================================================
    ABSEN
-===================================================== */
+================================================== */
 
-const studentNumber =
+const numberSelect =
     document.getElementById(
         "studentNumber"
     );
@@ -2011,13 +2396,14 @@ for(let i=1;i<=40;i++){
     option.value=i;
     option.textContent=i;
 
-    studentNumber.appendChild(option);
+    numberSelect.appendChild(option);
+
 }
 
 
-/* =====================================================
+/* ==================================================
    MUSIC
-===================================================== */
+================================================== */
 
 const bgMusic =
     document.getElementById(
@@ -2026,26 +2412,24 @@ const bgMusic =
 
 let musicOn = true;
 
-
-/*
-   80% default.
-   Ini sengaja dibuat lebih keras daripada
-   versi sebelumnya.
-*/
-
 bgMusic.volume = 0.8;
 
 
 function startMusic(){
 
-    if(!musicOn) return;
+    if(!musicOn){
+        return;
+    }
+
+
+    const slider =
+        document.getElementById(
+            "volume"
+        );
+
 
     bgMusic.volume =
-        Number(
-            document.getElementById(
-                "volume"
-            ).value
-        ) / 100;
+        Number(slider.value)/100;
 
 
     bgMusic.play()
@@ -2064,7 +2448,7 @@ function startMusic(){
         .catch(error=>{
 
             console.log(
-                "Musik belum dapat diputar:",
+                "Audio belum dapat diputar:",
                 error
             );
 
@@ -2109,9 +2493,9 @@ function changeVolume(value){
 }
 
 
-/* =====================================================
-   START
-===================================================== */
+/* ==================================================
+   START EXAM
+================================================== */
 
 function startExam(){
 
@@ -2196,13 +2580,13 @@ function startExam(){
 
 
     /*
-      Coba fullscreen.
-      Tidak semua browser HP mengizinkan
-      fullscreen secara otomatis.
+      Fullscreen hanya dicoba setelah
+      interaksi tombol pengguna.
     */
 
     if(
-        document.documentElement.requestFullscreen
+        document.documentElement
+            .requestFullscreen
     ){
 
         document.documentElement
@@ -2214,9 +2598,9 @@ function startExam(){
 }
 
 
-/* =====================================================
+/* ==================================================
    TIMER
-===================================================== */
+================================================== */
 
 function startTimer(){
 
@@ -2225,19 +2609,20 @@ function startTimer(){
 
             seconds--;
 
-            const min =
+
+            const minutes =
                 Math.floor(
                     seconds/60
                 );
 
-            const sec =
+            const secs =
                 seconds%60;
 
 
             document.getElementById(
                 "timer"
             ).textContent =
-                `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
+                `${String(minutes).padStart(2,"0")}:${String(secs).padStart(2,"0")}`;
 
 
             if(seconds<=300){
@@ -2264,9 +2649,53 @@ function startTimer(){
 }
 
 
-/* =====================================================
+/* ==================================================
+   ILLUSTRATION
+================================================== */
+
+function renderIllustration(q){
+
+    document.getElementById(
+        "illustration"
+    ).innerHTML=`
+
+        <div class="scene">
+
+            <div class="scene-card card-left">
+                ${q.cards[0]}
+            </div>
+
+            <div class="scene-card card-right">
+                ${q.cards[1]}
+            </div>
+
+            <div class="scene-card card-bottom-left">
+                ${q.cards[2]}
+            </div>
+
+            <div class="scene-card card-bottom-right">
+                ${q.cards[3]}
+            </div>
+
+            <div class="connector one"></div>
+            <div class="connector two"></div>
+            <div class="connector three"></div>
+            <div class="connector four"></div>
+
+            <div class="scene-main">
+                ${q.icon}
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* ==================================================
    RENDER QUESTION
-===================================================== */
+================================================== */
 
 function renderQuestion(){
 
@@ -2286,50 +2715,25 @@ function renderQuestion(){
         q.level;
 
 
-    const percent =
-        Math.round(
-            ((currentQuestion+1) /
-            questions.length)*100
-        );
+    const progress =
+        ((currentQuestion+1) /
+        questions.length) *
+        100;
 
 
     document.getElementById(
         "progressBar"
     ).style.width =
-        percent+"%";
+        progress+"%";
+
+
+    renderIllustration(q);
 
 
     document.getElementById(
         "questionText"
     ).textContent =
         q.question;
-
-
-    document.getElementById(
-        "illustration"
-    ).innerHTML = `
-
-        <div class="bubble b1">
-            ${q.tags[0]}
-        </div>
-
-        <div class="bubble b2">
-            ${q.tags[1]}
-        </div>
-
-        <div class="bubble b3">
-            💡 THINK
-        </div>
-
-        <div class="bubble b4">
-            🧠 LOGIC
-        </div>
-
-        <div class="illustration-emoji">
-            ${q.icon}
-        </div>
-
-    `;
 
 
     const options =
@@ -2352,9 +2756,8 @@ function renderQuestion(){
 
 
             if(
-                answers[
-                    currentQuestion
-                ]===index
+                answers[currentQuestion] ===
+                index
             ){
 
                 button.classList.add(
@@ -2388,9 +2791,7 @@ function renderQuestion(){
             };
 
 
-            options.appendChild(
-                button
-            );
+            options.appendChild(button);
 
         }
     );
@@ -2416,9 +2817,9 @@ function renderQuestion(){
 }
 
 
-/* =====================================================
-   NUMBER
-===================================================== */
+/* ==================================================
+   QUESTION NUMBERS
+================================================== */
 
 function renderNumbers(){
 
@@ -2445,7 +2846,7 @@ function renderNumbers(){
 
 
             if(
-                answers[index]!==null
+                answers[index] !== null
             ){
 
                 button.classList.add(
@@ -2456,7 +2857,7 @@ function renderNumbers(){
 
 
             if(
-                index===currentQuestion
+                index === currentQuestion
             ){
 
                 button.classList.add(
@@ -2468,16 +2869,15 @@ function renderNumbers(){
 
             button.onclick=()=>{
 
-                currentQuestion=index;
+                currentQuestion =
+                    index;
 
                 renderQuestion();
 
             };
 
 
-            box.appendChild(
-                button
-            );
+            box.appendChild(button);
 
         }
     );
@@ -2485,9 +2885,9 @@ function renderNumbers(){
 }
 
 
-/* =====================================================
+/* ==================================================
    NAVIGATION
-===================================================== */
+================================================== */
 
 function nextQuestion(){
 
@@ -2522,35 +2922,40 @@ function previousQuestion(){
 }
 
 
-/* =====================================================
+/* ==================================================
    SUBMIT
-===================================================== */
+================================================== */
 
 function confirmSubmit(){
 
     const unanswered =
         answers.filter(
-            x=>x===null
+            answer =>
+                answer === null
         ).length;
 
 
     if(unanswered>0){
 
-        const confirmResult =
+        const yes =
             confirm(
                 `Masih ada ${unanswered} soal yang belum dijawab.\n\nYakin ingin mengumpulkan?`
             );
 
-        if(!confirmResult) return;
+        if(!yes){
+            return;
+        }
 
     }else{
 
-        const confirmResult =
+        const yes =
             confirm(
                 "Semua soal sudah dijawab.\n\nYakin ingin mengumpulkan?"
             );
 
-        if(!confirmResult) return;
+        if(!yes){
+            return;
+        }
 
     }
 
@@ -2562,16 +2967,18 @@ function confirmSubmit(){
 }
 
 
-/* =====================================================
+/* ==================================================
    ANTI CHEATING
-===================================================== */
+================================================== */
 
 function violation(message){
 
     if(
         !started ||
         finished
-    ) return;
+    ){
+        return;
+    }
 
 
     violations++;
@@ -2594,7 +3001,7 @@ function violation(message){
 
 
 /*
-   Jika siswa keluar dari halaman/tab.
+   Tab / halaman ditinggalkan
 */
 
 document.addEventListener(
@@ -2618,10 +3025,14 @@ document.addEventListener(
 
 
 /*
-   Cegah copy/cut/paste.
+   Copy / Cut / Paste
 */
 
-["copy","cut","paste"].forEach(
+[
+    "copy",
+    "cut",
+    "paste"
+].forEach(
     eventName=>{
 
         document.addEventListener(
@@ -2649,7 +3060,7 @@ document.addEventListener(
 
 
 /*
-   Jika fullscreen keluar.
+   Fullscreen keluar
 */
 
 document.addEventListener(
@@ -2672,13 +3083,16 @@ document.addEventListener(
 );
 
 
-/* =====================================================
-   FINISH
-===================================================== */
+/* ==================================================
+   FINISH EXAM
+================================================== */
 
 async function finishExam(reason){
 
-    if(finished) return;
+    if(finished){
+        return;
+    }
+
 
     finished=true;
 
@@ -2822,9 +3236,7 @@ async function finishExam(reason){
 
 
     const sent =
-        await sendToSpreadsheet(
-            data
-        );
+        await sendToSpreadsheet(data);
 
 
     document.getElementById(
@@ -2834,14 +3246,15 @@ async function finishExam(reason){
         ? "✅ Nilai berhasil dikirim ke spreadsheet."
         : "⚠️ Spreadsheet belum terhubung.";
 
+    
     createReview();
 
 }
 
 
-/* =====================================================
-   SPREADSHEET
-===================================================== */
+/* ==================================================
+   SEND TO GOOGLE SHEET
+================================================== */
 
 async function sendToSpreadsheet(data){
 
@@ -2861,7 +3274,9 @@ async function sendToSpreadsheet(data){
         await fetch(
             GOOGLE_SCRIPT_URL,
             {
+
                 method:"POST",
+
                 mode:"no-cors",
 
                 headers:{
@@ -2871,6 +3286,7 @@ async function sendToSpreadsheet(data){
 
                 body:
                     JSON.stringify(data)
+
             }
         );
 
@@ -2888,9 +3304,9 @@ async function sendToSpreadsheet(data){
 }
 
 
-/* =====================================================
+/* ==================================================
    REVIEW
-===================================================== */
+================================================== */
 
 function createReview(){
 
@@ -2907,7 +3323,7 @@ function createReview(){
     questions.forEach(
         (q,index)=>{
 
-            const correct =
+            const isCorrect =
                 answers[index] ===
                 q.answer;
 
@@ -2918,20 +3334,21 @@ function createReview(){
                 );
 
 
-            div.className="review-item";
+            div.className =
+                "review-item";
 
 
             div.innerHTML=`
 
                 <b class="${
-                    correct
+                    isCorrect
                     ? "correct"
                     : "wrong"
                 }">
 
                     ${index+1}.
                     ${
-                        correct
+                        isCorrect
                         ? "✓ Benar"
                         : "✕ Salah"
                     }
@@ -2944,7 +3361,7 @@ function createReview(){
 
                 <br>
 
-                <small style="color:#8d98af">
+                <small style="color:#7f8aa3">
 
                     Jawaban benar:
                     ${q.options[q.answer]}
@@ -2962,9 +3379,9 @@ function createReview(){
 }
 
 
-/* =====================================================
+/* ==================================================
    CONFETTI
-===================================================== */
+================================================== */
 
 function createConfetti(){
 
@@ -2981,23 +3398,24 @@ function createConfetti(){
         "⭐",
         "🥳",
         "💜",
-        "🧠"
+        "🧠",
+        "🚀"
     ];
 
 
     for(
         let i=0;
-        i<70;
+        i<75;
         i++
     ){
 
-        const span =
+        const item =
             document.createElement(
                 "span"
             );
 
 
-        span.textContent =
+        item.textContent =
             emojis[
                 Math.floor(
                     Math.random() *
@@ -3006,20 +3424,25 @@ function createConfetti(){
             ];
 
 
-        span.style.left =
+        item.style.left =
             Math.random()*100+"%";
 
 
-        span.style.animationDelay =
+        item.style.animationDelay =
             Math.random()*1.5+"s";
 
 
-        box.appendChild(span);
+        item.style.fontSize =
+            (15 +
+            Math.random()*15)+"px";
+
+
+        box.appendChild(item);
 
 
         setTimeout(
-            ()=>span.remove(),
-            4000
+            ()=>item.remove(),
+            4500
         );
 
     }
